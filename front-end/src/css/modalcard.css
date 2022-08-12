@@ -1,0 +1,21 @@
+
+.modal-header{
+text-align: center !important;
+    font-size: 2rem;
+    background-color: rgb(64, 138, 228)  !important;
+    color:white !important;
+
+}
+.modalBody{
+text-align: center;
+    font-size: 1.2;
+}
+
+.modalBody p{
+    font-size:1.5rem;
+}
+
+.modal-footer{
+text-align: left !important;
+
+}

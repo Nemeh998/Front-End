@@ -1,0 +1,28 @@
+footer {
+  background: #000;
+  height: 200px;
+}
+
+.soc-media-ul {
+  display: flex;
+  justify-content: center;
+}
+
+.soc-media-ul li:not(:first-child) a {
+  margin-left: 1em;
+}
+
+.soc-media-ul a {
+  display: block;
+  padding: 0.5em .65rem;
+  font-size: 1rem;
+  color: #fff;
+  border-radius: 50%;
+  border: 2px solid;
+}
+  .soc-media-ul a:hover{
+    color: Var(red);
+  }
+  .soc-media-ul a:focus {
+    color: Var(red);
+  }

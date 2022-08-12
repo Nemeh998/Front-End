@@ -1,0 +1,54 @@
+/* .app {
+    background-color: black;
+    max-width: 1250px;
+    max-height: 860px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    border-radius: 14px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    font-size: 15px;
+    font-weight: 500;
+   } */
+   
+   .header {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    height: 68px;
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 30px;
+    white-space: nowrap;
+    justify-content: center;
+    background-color: rgb(246, 246, 246);
+    position:sticky;
+   }
+  
+ 
+
+    .header-menu {
+     display: flex;
+     align-items: center;
+    }
+
+      .header-menu a {
+      padding: 20px 30px;
+      text-decoration: none;
+      color: var(--inactive-color);
+      border-bottom: 2px solid transparent;
+      transition: 0.3s;}
+
+  
+      .header-menu a .is-active :hover {
+       color: var(--theme-color);
+ background-color: rgb(96, 96, 232);
+       border-bottom: 2px solid var(blue);
+      }
+     
+    
+ 
