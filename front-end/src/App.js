@@ -11,7 +11,7 @@ import Home from "./Home"
 import {Footer} from './components/Footer';
 import Admain from "./componentsadmain/Admain";
 import axios from "axios";
-// import IO from './componentsadmain/IO'
+import IO from './componentsadmain/IO'
 
 class App extends React.Component {
   constructor(props) {
@@ -168,9 +168,9 @@ handleClose =()=>{
 
 />}>
           </Route >
-          {/* <Route path="/io" element={<IO/>}>
+          <Route path="/io" element={<IO/>}>
             
-            </Route>  */}
+            </Route> 
         </Routes>
         <Footer />
       </Router>

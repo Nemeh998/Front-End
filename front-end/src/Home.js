@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from 'react-bootstrap/Card';
 import './css/home.css'
+import './css/io.css'
 import ModalSturtup from './ModalSturtup';
  export class Home extends Component {
     
@@ -20,12 +21,29 @@ displayAsCard = (data)=>{
       
       return (
           <div>
-                {console.log(this.props.data,"alldata")}
-              <div className="blog-header-img">
-                            </div>
-                            <p className='discrption'><span>Jordan Startup Map</span><br/>
-                            Jordan Startup Map
-The existing Jordanian startup landscape is a vibrant and diverse ecosystem. We have mapped 375+ startups across various verticals or focused sectors.</p>
+                 <div>
+                    <div className="wrapper">
+   
+   <section id="home" className="sec-main">
+     <h1 className="main-heading">Where creativity happens.</h1>
+   </section>
+ 
+   <section id="about" className="sec-about">
+     <div className="container1">
+       <h1>About me</h1>
+ 
+       <hr />
+ 
+       <div className="row-1">
+         <div class="col-sm-6 col-sm-offset-3">
+           <p>Startups are a valuable partner, with our business relationship and cooperation we succeed to attract and gain lots of opportunities which made a difference in our business, we are proud to work with startups where we can build success</p>
+         </div>
+       </div>
+     </div>
+   </section>
+   </div>
+   </div>
+    {/* ============================= */}
                 <div className="All-card">
                     {this.props.data.map(item1 => {
                         console.log(item1)

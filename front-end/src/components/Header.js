@@ -27,6 +27,7 @@ export class Header extends Component {
           <img class="profile-img" ></img>
 
         </div>
+        
       </div>
 
     )

@@ -17,6 +17,7 @@ html {
 body {
   font-family: 'Open sans', sans-serif;
   font-weight: 300;
+  text-align: center;
 }
 
 .main-heading {
@@ -32,7 +33,16 @@ body {
   text-align: center;
   text-transform: uppercase;
 }
-
+.row-1{
+  margin-top:25px ;
+  margin-bottom:25px ;
+  margin-bottom: 70px;
+  margin-left: 33%;
+  /* font-weight: bold; */
+  font-size: 3rem;
+  color: rgb(0, 0, 0); 
+  text-align: center;
+}
 p {
   font-size: 16px;
   line-height: 1.5;
@@ -88,8 +98,9 @@ a {
 }
 
 hr {
-  margin-bottom: 3em;
-  width: 7%;
+  margin: 1px 33% 5em 33%;
+  /* margin-bottom: 3em; */
+  width: 35%;
 }
 
 /*=Layout=*/
@@ -126,7 +137,7 @@ hr {
 .sec-main {
   position: relative;
   height: 560px;
-  background: url(https://source.unsplash.com/kVf7VRgg4p8/1920x1080) no-repeat center center;
+  background: url('../img/What-are-the-legal-procedures-required-for-a-startup-In-India.jpg') no-repeat center center;
   background-size: cover;
 }
 .sec-main:after {
