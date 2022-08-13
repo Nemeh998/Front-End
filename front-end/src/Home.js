@@ -4,6 +4,9 @@ import Card from 'react-bootstrap/Card';
 import './css/home.css'
 import './css/io.css'
 import ModalSturtup from './ModalSturtup';
+import Spinner from 'react-bootstrap/Spinner';
+
+
  export class Home extends Component {
     
 constructor(props){
@@ -44,7 +47,13 @@ displayAsCard = (data)=>{
    </div>
    </div>
     {/* ============================= */}
-                <div className="All-card">
+    {this.props.data  ===0 ?(
+   <>
+   <Spinner animation="border" variant="success" />
+   <p style={{ color: "green" }}>Loading...</p>
+ </>
+    ):(
+<div className="All-card">
                     {this.props.data.map(item1 => {
                         console.log(item1)
                         return (
@@ -102,6 +111,11 @@ displayAsCard = (data)=>{
                     })
                 }
                 </div>
+
+
+
+    )}
+                
 
             </div>
         )

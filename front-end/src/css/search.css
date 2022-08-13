@@ -1,0 +1,141 @@
+.search-container {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 9em;
+  }
+  
+  .search-container p {
+    font-size: 1.5em;
+  }
+  
+  .select-container {
+    display: flex;
+    gap: 20px;
+    justify-content: left;
+  }
+  
+  .select-container select {
+    margin-bottom: 5px;
+  }
+  
+  .course-cards {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 4em;
+    margin-bottom: 7em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+  }
+  
+  .course-card {
+    width: 18rem;
+    height: 23rem;
+    border-radius: 7px;
+  }
+  
+  .course-card-img:hover {
+    cursor: pointer;
+  }
+  .course-card:hover {
+    cursor: default;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+      rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+      rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    transform: scale(1.01);
+  }
+  
+  .course-search-input {
+    width: 70%;
+    /* background: url("../img/Search-icon.png") no-repeat scroll 7px 7px; */
+    padding-left: 40px;
+  }
+  .course-search-input,
+  .course-search-btn {
+    display: inline-block;
+  }
+  
+  .course-modal-close {
+    font-size: 40px;
+    cursor: pointer;
+  }
+  
+  .course-modal-close:hover {
+    color: grey;
+  }
+  
+  .instructor-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  
+  .course-modal-body h3 {
+    border-bottom: 1px solid rgba(177, 177, 177, 0.568);
+    padding-bottom: 2px;
+  }
+  
+  .modal-footer-tags {
+    width: 350px;
+    position: absolute !important;
+    left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+  }
+  
+  .modal-footer-tags span {
+    display: inline-block;
+    background-color: orange;
+    border-radius: 10px;
+    padding: 1px 9px;
+    margin: 3px;
+    font-size: 13px;
+  }
+  
+  .modal-footer {
+    height: 130px;
+  }
+  
+  .modal-dialog {
+    max-width: 800px !important;
+  }
+  
+  .modal-content {
+    padding: 0 20px !important;
+  }
+  
+  .course-fav {
+    color: rgb(238, 82, 82);
+    font-size: 50px;
+    position: absolute;
+    left: 2px;
+    bottom: 2px;
+  }
+  .course-fav-text {
+    position: absolute;
+    left: 7px;
+    bottom: 2px;
+    color: rgb(238, 82, 82);
+    font-size: 15px;
+  }
+  
+  .course-enrolled-text {
+    position: absolute;
+    right: 7px;
+    bottom: 2px;
+    font-size: 15px;
+    margin-bottom: 0 !important;
+  }
+  
+  .course-fav:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+  }
+  
+  .course-alert {
+    width: 30em;
+    margin: 5% 37%;
+  }
+  

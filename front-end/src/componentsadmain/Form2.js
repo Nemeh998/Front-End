@@ -9,8 +9,74 @@ export class Form2 extends Component
 
     render()
     {
-        return (
-            < div className="Form-2" >
+        return (<>
+        <h1 className='h1-des'>startup</h1>
+        <table className="container">
+	<thead>
+    <tr>
+          
+          <th> <h1>startup Name</h1></th>
+          <th> <h1>logo </h1></th>
+          <th> <h1>Update </h1></th>
+          <th> <h1>Delete </h1></th>
+        </tr>
+	</thead>
+	
+                    
+                        
+      {
+          this.props.data.map(item1 => {
+            return(
+                <>
+                
+                {
+                
+                    item1.sectors.map(itemsectors => {
+return(
+
+                        <>
+                        
+                        {
+                             itemsectors.startup.map((itemstartup,idx)=>{
+                                return(
+
+                                           <tbody>
+                                           <tr>
+                                    
+                                             
+                                              <td>{itemstartup.startupName}</td>
+                                             
+          <td>{itemstartup._id} </td>
+          <td> <button>update</button> </td>
+          <td> <button onClick={()=>{this.props.deleteStartUp(item1._id,itemsectors._id,itemstartup._id,idx)}}>x</button> </td>
+                                              </tr>
+                                          </tbody>
+                                )
+                            })
+                        }
+                        
+                        
+                        </>
+)
+                       })
+                
+                    }
+            
+                </>
+            )
+            
+        })
+}
+
+
+
+
+    
+                        
+        </table>
+        {/* ================== */}
+        
+        < div className="Form-2" >
 <h1> add startup</h1>
 <Form onSubmit={this.props.addstartupsData}>
       <Row className="mb-3">
@@ -104,6 +170,8 @@ export class Form2 extends Component
        </Button>
     </Form>
             </div >
+        </>
+            
         )
     }
 }

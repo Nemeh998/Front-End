@@ -15,7 +15,7 @@ export class Header extends Component {
             <Link clLinkss="menu-link is-Linkctive" to="/">home</Link>
             <Link clLinkss="menu-link notify" to="/Admain">Admain</Link>
             <Link clLinkss="menu-link" to="/io">io</Link>
-            <Link clLinkss="menu-link" to="#">Discover</Link>
+            <Link clLinkss="menu-link" to="/lo">Discover</Link>
           
           </div>
 
