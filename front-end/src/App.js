@@ -185,14 +185,14 @@ class App extends React.Component {
 
 
 
-            <Route path="/io" element={<IO />}>
+            {/* <Route path="/io" element={<IO />}> */}
 
-            </Route> <Route path="/lo" element={<IO2
+            {/* </Route> <Route path="/lo" element={<IO2
               data={this.state.data}
 
-            />}>
+            />}> */}
 
-            </Route>
+            {/* </Route> */}
           </Routes>
           <Footer />
         </Router>
