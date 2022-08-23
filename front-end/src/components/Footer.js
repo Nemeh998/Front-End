@@ -1,32 +1,26 @@
 import React, { Component } from 'react'
 import '../css/footer.css'
+import GitHubIcon from '@mui/icons-material/GitHub';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 export class Footer extends Component {
   render() {
     return (
-      <footer id="footer">
-      
-        <ul className="soc-media-ul">
-          <li>
-            <a href="https://twitter.com/AlexDevero" class="fa fa-twitter" target="_blank"></a>
-          </li>
-  
-          <li>
-            <a href="https://plus.google.com/u/0/+AlexDevero" class="fa fa-google-plus" target="_blank"></a>
-          </li>
-  
-          <li>
-            <a href="https://cz.linkedin.com/pub/alex-devero/38/262/70/" class="fa fa-linkedin" target="_blank"></a>
-          </li>
-  
-          <li>
-            <a href="https://www.behance.net/d3v3r0" class="fa fa-behance" target="_blank"></a>
-          </li>
-  
-          <li>
-            <a href="mailto:example@mail.com" class="fa fa-envelope"></a>
-          </li>
-        </ul>
-    </footer>
+    
+      <footer class="footer-basic ">
+        
+      <div id="footer-logo" class="logo">
+          <div id="logo" class="center" >
+              {/* <img src="images/logo.png" alt="" /> */}
+            
+          </div>
+      </div>
+      <div class="social"><a href="#"><i ><GitHubIcon/></i></a><a href="#"><i class="icon ion-social-snapchat"></i><LinkedInIcon/></a><a href="#"><i class="icon ion-social-twitter"></i><TwitterIcon/></a><a href="#"><i class="icon ion-social-facebook"><FacebookIcon/></i></a></div>
+      <span class="copyright">Htu studant © 2022</span>
+    
+    
+  </footer>
     )
   }
 }

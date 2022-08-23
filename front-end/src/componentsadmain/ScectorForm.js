@@ -5,6 +5,10 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import '../css/formSector.css'
 export class ScectorForm extends Component {
+RefreshPage=()=> {
+    Window.location.reload(false);
+  }
+
   render() {
     return (
       <>
@@ -14,7 +18,7 @@ export class ScectorForm extends Component {
             <tr>
 
               <th> <h1>startup Name</h1></th>
-              <th> <h1>logo </h1></th>
+              
               <th> <h1>Update </h1></th>
               <th> <h1>Delete </h1></th>
             </tr>
@@ -37,9 +41,10 @@ export class ScectorForm extends Component {
                             <tr>
                                <td>{itemsectors.subSectorname}</td>
                                              
-          <td>{itemsectors._id} </td> 
+        
                               <td> <button>update</button> </td>
-                              <td> <button onClick={() => {this.props.deleteSectors(item1._id, itemsectors._id, idx)}}>x</button> </td>
+                              <td> <button onClick={() => {this.props.deleteSectors(item1._id, itemsectors._id);
+                          }}>x</button> </td>
                             </tr>
                           </tbody>
                                 
@@ -69,11 +74,12 @@ export class ScectorForm extends Component {
 
         < div className="Form-2" >
           <h1> add secrors</h1>
-          <Form onSubmit={this.props.addsectorsData}>
+          <Form onSubmit={this.props.addsectorsData}
+        >
             <Row className="mb-3">
               <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Label>addsub Sector name</Form.Label>
-                <Form.Control placeholder="addsubSectorname" type="text" id="addsubSectorname" name="startupName" />
+                <Form.Control type="text" placeholder="subSectorname"  id="subSectorname" name="subSectorname" />
               </Form.Group>
 
             </Row>

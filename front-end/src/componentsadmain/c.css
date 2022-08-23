@@ -1,0 +1,83 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css");
+
+.app {
+  
+}
+
+.main {
+  max-width: ;
+}
+
+.title {}
+
+.wrapper {}
+
+.container {
+  width: 100%;
+ display: flex; 
+  gap: 30px;
+  margin-left: 30px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.thumb {
+  width: 218px;
+  padding: 8px;
+  border: 1px solid;
+  display: inline-block;
+}
+
+.thumb-img > img {
+width: 218px;
+  height: 218px;
+}
+
+.thumb-text {
+  
+}
+
+.thumb-title {
+  font-weight: bold;
+}
+
+.thumb-user {
+ font-size: 12px; 
+}
+
+.scroll-control {
+ position: absolute;
+  width: 100%;
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10; 
+}
+
+.left-btn {
+  margin-left: ;
+}
+
+.right-btn {
+ margin-right: 45px; 
+}
+
+.left-btn-2, .right-btn-2 {
+ width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background-color: #000d1a;
+  padding: 10px;
+
+  user-select: none;
+  transition: 0.3s;
+  font-size: 18px; 
+}
+
+.left-btn-2:hover, .right-btn-2:hover {
+    background-color: #0073e6;
+    transition: 0.5s;
+}

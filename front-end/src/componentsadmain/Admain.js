@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from "axios";
 import '../css/admin.css'
-import Form2 from './Form2'
+import Form2 from './StartupForm'
 
 import{Link,Outlet} from "react-router-dom";
 export class Admain extends Component {
@@ -11,8 +11,8 @@ export class Admain extends Component {
 
         return (
             <div>
-<div>
-<nav>
+<div >
+<nav className="nav-bar-admain">
         <Link to="Form2">Startup</Link>
         <br/>
         <Link to="ScectorForm">Sector</Link>

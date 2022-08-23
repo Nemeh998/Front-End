@@ -1,0 +1,30 @@
+body{
+    margin: 50px 20%;
+}
+.item{
+    min-height: 20rem;
+    min-width:20rem;
+    padding: 40px;
+background-color: rgb(247, 247, 247);
+}
+
+
+
+.item img{
+background-color: rgb(255, 255, 255);
+pointer-events: none;
+    width: 100%;
+height: 100%;
+border-radius: 2rem;
+}
+.inner-carousel{
+display: flex;
+background-color: rgb(255, 255, 248);
+
+}
+.carosel{
+  cursor: grab;
+  overflow: hidden;
+background-color: rgb(0, 153, 255);
+
+}
