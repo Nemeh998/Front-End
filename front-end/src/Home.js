@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import './css/home.css'
-
+import Spinner from 'react-bootstrap/Spinner';
 import ModalSturtup from './ModalSturtup';
 export class Home extends Component {
 
-  
+
     displayAsCard = (data) => {
         this.props.displayCardAsModel(data)
     }
@@ -16,7 +16,7 @@ export class Home extends Component {
     }
 
     render() {
-    
+
         return (
             <div>
                 <div>
@@ -26,7 +26,7 @@ export class Home extends Component {
 
                         <section id="about" className="sec-about">
                             <div className="container1">
-                                <h1>About </h1>
+                                <h1> Startup Map </h1>
 
                                 <hr />
 
@@ -39,8 +39,15 @@ export class Home extends Component {
                         </section>
                     </div>
                 </div>
-             
-                    <div className='filter-container' >
+                {this.props.data.length === 0 ? (
+                    <div className='spinner1'>
+                        <Spinner className='spinneritem' size='lg' animation="border" variant="primary" />
+
+                    {/* <Spinner animation="grow" variant="primary" /> */}
+                    
+                    </div>
+                ) : (<>
+                <div className='filter-container' >
                 {this.props.data.map(item1 => {
                
                return (
@@ -87,17 +94,18 @@ export class Home extends Component {
 </div>
 </div>
 
+</>
+
+                )
+                }
 
 
+                <ModalSturtup
 
-
-
-<ModalSturtup
-                                               
-                                               selectDataStartUp={this.props.selectDataStartUp}
-                                               handleClose={this.props.handleClose}
-                                               displayCard={this.props.displayCard}
-                                               />
+                    selectDataStartUp={this.props.selectDataStartUp}
+                    handleClose={this.props.handleClose}
+                    displayCard={this.props.displayCard}
+                />
 
 
             </div >

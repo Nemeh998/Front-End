@@ -110,7 +110,21 @@ export class Form2 extends Component {
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridCity">
               <Form.Label>City</Form.Label>
-              <Form.Control input type="text" id="city" name="city" />
+              {/* <Form.Control input type="text" id="city" name="city" /> */}
+            <Form.Select id="city" name="city" >
+            <option value="all">All</option>
+                <option value="Amman">Amman</option>
+                <option value="Balqa ">Balqa</option>
+                <option value="Madaba ">Madaba </option>
+                <option value="Zarqa ">Zarqa </option>
+                <option value="Ajlun ">Ajlun </option>
+                <option value="Irbid">Irbid</option>
+                <option value="Mafraq ">Mafraq </option>
+                <option value="Aqaba ">Aqaba </option>
+                <option value="Karak ">Networking</option>
+                <option value="Ma'an ">Ma'an </option>
+                <option value="Tafilah  ">Tafilah  </option>
+            </Form.Select>
             </Form.Group>
 
 

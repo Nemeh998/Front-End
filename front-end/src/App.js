@@ -1,5 +1,4 @@
 import React from "react";
-import './App.css';
 import {
   BrowserRouter as Router,
   Routes,
@@ -14,15 +13,19 @@ import axios from "axios";
 import StartupForm from "./componentsadmain/StartupForm";
 import {ScectorForm} from './componentsadmain/ScectorForm';
 import Search from "./Search";
+
+import { withAuth0 } from "@auth0/auth0-react";
+import About from "./About";
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
       sectorsData: [],
+      // modal startup
       displayCard: false,
       selectDataStartUp: {},
-      // update card
+      // update card data 
       selectupdateCrad:{},
       item1id:"",
       itemstartupid:"",
@@ -32,9 +35,17 @@ class App extends React.Component {
       // ==============
       filteredData:[],
       searchValue: "",
-      // ===============
+      // ===============update modal
       selectDataSector:[],
       displaystartupCard:false,
+      // ===============filter1
+    searchValue: "",
+      
+      filterData:[],
+      // ============email
+      userEmail:[],
+      // jnhbgvfcfvghj
+      setSearchInput:[],
     }
   }
   // =====================================
@@ -49,7 +60,6 @@ class App extends React.Component {
         this.setState({
           data: response.data,
         });
-        // console.log(this.state.data);
       })
       .catch((err) => {
         this.setState({err: "There is and error"});
@@ -58,8 +68,6 @@ class App extends React.Component {
   //========================================
   // delete sectors
   deleteSectors = async (mainSectorid,sectorsId ) => {
-    // console.log('first')
-    // console.log(sectorsId, mainSector)
 
     const serverUrl = process.env.REACT_APP_SERVER;
 
@@ -67,15 +75,12 @@ class App extends React.Component {
     this.setState({
       data: url.data,
     })
-    this.componentDidMount()
+    // this.componentDidMount()
   
-    // console.log(this.setState.data, "data")
   }
   // ================================================
   // delete start up data
   deleteStartUp = async (mainSectorid, sectorsId, startupid, idx) => {
-    // console.log('first')
-    // console.log("sectorsId", sectorsId, "mainSectorid", mainSectorid, 'startupid', startupid)
 
     const serverUrl = process.env.REACT_APP_SERVER;
 
@@ -85,15 +90,12 @@ class App extends React.Component {
       filter:url.data
 
     })
-    // console.log(this.setState.data, "data")
-    this.componentDidMount()
+    // this.componentDidMount()
   }
   // ============================================
   // add start up data
   addstartupsData = async (e) => {
     e.preventDefault()
-    // console.log('add data')
-    // console.log(e.targe.LogoImage,"pic")
     let newStartups = {
       startupName: e.target.startupName.value,
       LogoImage: e.target.LogoImage.value,
@@ -106,7 +108,7 @@ class App extends React.Component {
       Sectors: e.target.Sectors.value,
       mainSectorName: e.target.mainSectorName.value,
     }
-    // console.log("newStartups", newStartups)
+    console.log(newStartups)
     const serverUrl = process.env.REACT_APP_SERVER;
 
 
@@ -114,7 +116,7 @@ class App extends React.Component {
     this.setState({
       data: startupsData.data,
     });
-    this.componentDidMount()
+    // this.componentDidMount()
   };
 
   // ====================================================
@@ -125,11 +127,9 @@ class App extends React.Component {
       subSectorname: e.target.subSectorname.value,
       subSectorLogo: e.target.subSectorLogo.value,
       subDesignColor: e.target.subDesignColor.value,
-      // subParentCategoryName: e.target.subParentCategoryName.value,
       mainSectorid: e.target.mainSectorName.value,
     }
 
-    // console.log("NewSectors", newSectors)
     const serverUrl = process.env.REACT_APP_SERVER;
     let sectorsData = await axios.post(`${serverUrl}/postSectorsDataHendler`, newSectors)
     this.setState({
@@ -170,8 +170,6 @@ class App extends React.Component {
         itemsectorsid:itemsectors_id, 
         idx:idx_id,
       });
-      // console.log(item1,itemstartup_id,itemsectors, idx)
-      // console.log("anything", clickStartupImg)
       this.state.data.map(item1 => {
         item1.sectors.map(itemsectors => {
           
@@ -193,7 +191,6 @@ class App extends React.Component {
         });
   
       });
-      // console.log('its wok')
   
     }
     handleCloseUpdatecard = () => {
@@ -231,84 +228,63 @@ class App extends React.Component {
       displayCard: false
     })
   }
-//   searchFilter = async(e) => {
-//     e.preventDefault();
-//     let value = e.target.searchValue.value;
 
-//     // const Regex = new RegExp(value, "g");
-
-//      let newdata = await this.state.data.map((mainsector) => {
-//         return(
-//             <>
-//             { mainsector.sectors.filter((itemsectors)=>{
-//             console.log(itemsectors.subSectorname,"subSectorname")
-
-//             // return Regex.test(itemsectors.subSectorname);
-//             let filterdata= Object.values(itemsectors).join('').toLowerCase().includes(value.toLowerCase())
-//       this.setState({ filterData: filterdata });
-            
-//           })}
-            
-//             </>
-//         )
-
-//       }
-      
-      
-//       );
-//     // console.log(newdata,"new")
-//   console.log(this.state.filterData,"filter state")
-//   };
-
-//   searchChange = (e) => {
-
-//     this.setState({ searchValue: e.target.value });
-
-// };
-// searc2
-handleFilter=async(e)=>{
-  const searchText=e.target.value;
-  this.setState=({
-      filteredData:this.state.filteredData.splice(0, this.state.filteredData.length)
-  })
-
-  const newFilter=await this.props.data.map((value)=>{
+  handlerFilter = async(e) => {
+    e.preventDefault();
+    const searchText=e.target.value;
+    this.setState=({
+      filterData:this.state.filterData.splice(0, this.state.filterData.length)
+    })
+    console.log(searchText)
+    const newFilter=await this.state.data.map((value)=>{
       value.sectors.filter(itemsectors=>{
-          if(itemsectors.subSectorname.toLowerCase().includes(searchText.toLowerCase())){
-
-              if(searchText!=""){
-                  this.setState=({
-filteredData:this.state.filteredData.push(itemsectors)
-                  })
-              }}
-          })
+        if(itemsectors.subSectorname.toLowerCase().includes(searchText.toLowerCase())){
+          
+          if(searchText!=""){
+            this.setState=({
+              filterData:this.state.filterData.push(itemsectors)
+            })
+          }
+          
+        }
       })
-  
-}
+      console.log(this.state.filterData)
+    })
 
+  };
+
+  searchChange = (e) => {
+    this.setState({ searchValue: e.target.value });
+  }
+
+// sectors button
 filterdSector=(subSectorname)=>{
   console.log(subSectorname)
   this.state.data.map(item1 => {
     item1.sectors.map(itemsectors => {
       if (itemsectors.subSectorname === subSectorname) {
         const selectDataSector = itemsectors.startup;
-        // console.log('find', selectDataSector)
         this.setState({
           selectDataSector: selectDataSector,
           displaystartupCard: true,
         });
         console.log('SectorName', selectDataSector);
       }
+      else{
+        // console.log(itemsectors)
+      }
     });
   });
 }
-  render() {
 
+render() {
+const { user, isAuthenticated } = this.props.auth0;
     return (
       <div >
+   
         <Router>
-          <Header />
-    
+          <Header isAuthenticated={isAuthenticated} />
+
           <Routes>
             <Route path="/" element={<Home
               displayCardAsModel={this.displayCardAsModel}
@@ -329,6 +305,7 @@ filterdSector=(subSectorname)=>{
             </Route>
 
             <Route path='Admain' element={<Admain
+            // user={user} isAuth={isAuthenticated}
               data={this.state.data}
               deleteStartUp={this.deleteStartUp}
               addstartupsData={this.addstartupsData}
@@ -353,10 +330,16 @@ filterdSector=(subSectorname)=>{
             </Route>
             <Route path='search' element={<Search
                 data={this.state.data}
+                searchChange={this.searchChange}
+                searchFilter={this.searchFilter}
+                searchValue={this.state.searchValue}
+                handlerFilter={this.handlerFilter}
+                filterData={this.state.filterData}
                 />}>
               
            
             </Route>
+            <Route path='About' element={<About/>}/>
           </Routes>
           <Footer />
         </Router>
@@ -365,4 +348,4 @@ filterdSector=(subSectorname)=>{
   }
 }
 
-export default App;
+export default withAuth0(App);

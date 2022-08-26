@@ -3,7 +3,7 @@ footer
 {
     height: 35vh;    
     background-size: cover;
-    background-image: linear-gradient(to right bottom,#8183e0,rgba(8, 85, 59, 0.8));
+    background-image: linear-gradient(to right bottom,#8183e0,rgba(29, 133, 185, 0.8));
     background-position: top;
     position: relative;
     display: block;

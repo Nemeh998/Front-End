@@ -29,12 +29,13 @@ header
 }
 .logo img
 {
+
   border-radius: 8rem 8rem 8rem 8rem;
   border: 2px white solid;
   width: 4rem;
   height: 4rem;
     font-family: 'Pattaya', sans-serif;
-    color: #fff;
+    background-image: linear-gradient(to right bottom,#8183e0,rgba(29, 133, 185, 0.8))
 }
 
 header #navbarContainer li
