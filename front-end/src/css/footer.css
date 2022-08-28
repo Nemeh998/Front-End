@@ -1,13 +1,13 @@
   
 footer
 {
-    height: 35vh;    
+    height: 30vh;    
     background-size: cover;
-    background-image: linear-gradient(to right bottom,#8183e0,rgba(29, 133, 185, 0.8));
+    background-image: linear-gradient(to right bottom,rgba(63, 40, 180, 0.8),rgba(29, 133, 185, 0.8));
     background-position: top;
     position: relative;
     display: block;
-    clip-path: polygon(0 20%, 100% 30%, 100% 100%, 0% 100%);
+    /* clip-path: polygon(0 20%, 100% 30%, 100% 100%, 0% 100%); */
     overflow: hidden;
     margin-top: -120px;
     z-index: 80;

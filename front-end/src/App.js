@@ -108,7 +108,6 @@ class App extends React.Component {
       Sectors: e.target.Sectors.value,
       mainSectorName: e.target.mainSectorName.value,
     }
-    console.log(newStartups)
     const serverUrl = process.env.REACT_APP_SERVER;
 
 
@@ -258,8 +257,11 @@ class App extends React.Component {
   }
 
 // sectors button
+// componentDidMount = () => {
+//  this.filterdSector;
+// };
 filterdSector=(subSectorname)=>{
-  console.log(subSectorname)
+let Arr=[]
   this.state.data.map(item1 => {
     item1.sectors.map(itemsectors => {
       if (itemsectors.subSectorname === subSectorname) {
@@ -270,11 +272,21 @@ filterdSector=(subSectorname)=>{
         });
         console.log('SectorName', selectDataSector);
       }
-      else{
-        // console.log(itemsectors)
+      else {
+      for (let i=0;i<=itemsectors.startup.length;i++){
+        if(itemsectors.startup[i]){
+
+          Arr.push(itemsectors.startup[i])
+        }
+      }
+      this.setState({
+        selectDataSector: Arr,
+        displaystartupCard: true,
+      });
       }
     });
   });
+  console.log(Arr)
 }
 
 render() {

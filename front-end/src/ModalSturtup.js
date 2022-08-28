@@ -18,7 +18,7 @@ export class ModalSturtup extends Component {
       <>
         
         <Modal     show={this.props.displayCard} 
-          size={ 'lg'} 
+          size={ 'sm'} 
           animation={'true'} 
           onHide={this.props.handleClose}
           class="counter">

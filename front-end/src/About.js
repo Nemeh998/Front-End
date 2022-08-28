@@ -1,13 +1,34 @@
 import React, { Component } from 'react'
 import './css/About.css'
-import imgNEmh from './img/Nemh.jpg'
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import contactAta from './img/contactAta.jpg'
+import cover from './img/cover.webp'
+
 export default class  extends Component {
   render() {
     return (
    <div>
+
+<div className="about-header">
+          <div className="about-header-img">
+             {/* <img src={cover}/> */}
+
+            <div className="container h-100">
+              <div className="row row-cols-2 h-100">
+                <div className="col about-header-text">
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
 
         <div className="about-pic-header pt-5 pb-5">
           <div className="container">

@@ -5,6 +5,10 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import '../css/formSector.css'
 import UpdatestartUpdata from './UpdatestartUpdata';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import Card from 'react-bootstrap/Card';
+import section from '../img/start2.jpg'
 export class Form2 extends Component {
   RefreshPage = () => {
     Window.location.reload(false);
@@ -12,18 +16,7 @@ export class Form2 extends Component {
   render() {
     return (<>
       <h1 className='h1-des'>startup</h1>
-      <table className="container">
-        <thead>
-          <tr>
-
-            <th> <h1>startup Name</h1></th>
-            <th> <h1>Update </h1></th>
-            <th> <h1>Delete </h1></th>
-          </tr>
-        </thead>
-
-
-
+      <div className='contener'>
         {
           this.props.data.map(item1 => {
             return (
@@ -39,19 +32,26 @@ export class Form2 extends Component {
                         {
                           itemsectors.startup.map((itemstartup, idx) => {
                             return (
+<div className='pic-button'>
+<Card border="secondary" className='cardDelAdd'>
 
-                              <tbody>
-                                <tr>
+<Card.Body>
 
+         <Card.Img variant="top" src={itemstartup.LogoImage} />
+</Card.Body>
+ <Card.Footer>
+                       <div className='contbtn'>         
 
-                                  <td>{itemstartup.startupName}</td>
+<button onClick={() => {this.props.displayUpdateCardAsModel(item1._id,itemstartup._id,itemsectors._id, idx)}}><EditIcon/></button>
+<button onClick={() => {this.props.deleteStartUp(item1._id, itemsectors._id, itemstartup._id, idx)}}> <DeleteIcon/> </button> 
+</div>
+</Card.Footer>
+</Card>
 
+                                
 
-
-                                  <td> <button onClick={() => {this.props.displayUpdateCardAsModel(item1._id,itemstartup._id,itemsectors._id, idx)}}>update</button> </td>
-                                  <td> <button onClick={() => {this.props.deleteStartUp(item1._id, itemsectors._id, itemstartup._id, idx)}}> -x- </button> </td>
-                                </tr>
-                              </tbody>
+          
+  </div>                   
                             )
                           })
                         }
@@ -67,17 +67,21 @@ export class Form2 extends Component {
 
           })
         }
+      </div>
 
 
 
 
-
-
-      </table>
-      {/* ================== */}
-
-      < div className="Form-2" >
         <h1> add startup</h1>
+
+      {/* ================== */}
+      <div className='all-form-pic'>
+
+<div className='AddStartup-form'>
+<div className='img'>
+  {/* <img src={section}/> */}
+</div>
+      < div className="Form-2" >
         <Form onSubmit={this.props.addstartupsData}
 
         // onClick={() => {this.RefreshPage()}}
@@ -96,7 +100,7 @@ export class Form2 extends Component {
 
           <Form.Group className="mb-3" controlId="formGridAddress1">
             <Form.Label>Logo Image</Form.Label>
-            <Form.Control type="url"  id="LogoImage" name="LogoImage" />
+            <Form.Control type="url" id="LogoImage" name="LogoImage" />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formGridAddress2">
@@ -111,8 +115,8 @@ export class Form2 extends Component {
             <Form.Group as={Col} controlId="formGridCity">
               <Form.Label>City</Form.Label>
               {/* <Form.Control input type="text" id="city" name="city" /> */}
-            <Form.Select id="city" name="city" >
-            <option value="all">All</option>
+              <Form.Select id="city" name="city" >
+                <option value="all">All</option>
                 <option value="Amman">Amman</option>
                 <option value="Balqa ">Balqa</option>
                 <option value="Madaba ">Madaba </option>
@@ -124,7 +128,7 @@ export class Form2 extends Component {
                 <option value="Karak ">Networking</option>
                 <option value="Ma'an ">Ma'an </option>
                 <option value="Tafilah  ">Tafilah  </option>
-            </Form.Select>
+              </Form.Select>
             </Form.Group>
 
 
@@ -187,12 +191,16 @@ export class Form2 extends Component {
           </Button>
         </Form>
       </div >
-<UpdatestartUpdata
-updateStartUp={this.props.updateStartUp}
-  displayCardUpdate={this.props.displayCardUpdate}
-  handleCloseUpdatecard={this.props.handleCloseUpdatecard}
-  selectupdateCrad={this.props.selectupdateCrad}
-/>
+
+
+      </div>
+      </div>
+      <UpdatestartUpdata
+        updateStartUp={this.props.updateStartUp}
+        displayCardUpdate={this.props.displayCardUpdate}
+        handleCloseUpdatecard={this.props.handleCloseUpdatecard}
+        selectupdateCrad={this.props.selectupdateCrad}
+        />
     </>
 
     )

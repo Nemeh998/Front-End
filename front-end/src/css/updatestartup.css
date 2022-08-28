@@ -1,0 +1,33 @@
+
+.modal-pic{
+
+display: grid;
+grid-template-columns: 1fr 1fr;
+
+}
+.modal-header{
+    font-size: 2rem;
+}
+.Form-Updata{
+    background-color: hsl(0, 0%, 100%);
+        text-align: center;
+        /* overflow: hidden; */
+        /* width: 100%; */
+        /* height:100% ; */
+        /* margin: 100px auto; */
+    display: table;
+    padding:  0 1em 0;
+    font-size: 1.5rem;
+
+    }
+    .Form-Updata form button{
+        margin-top: 5rem;
+        padding:2rem 4rem;
+    
+    }
+    .modal-pic img{
+        object-fit:cover;
+        border: none;
+        width: 100%;
+        height: 100%;
+    }

@@ -21,6 +21,9 @@ body{
   /* background-image:url("/Order_summary_component/order-summary-component-main/images/pattern-background-desktop.svg") */
   font-family: 'El Messiri', sans-serif;
 }
+/* .modal-content{
+    width: 90%;
+} */
 .counter{
     /* margin: 100px ; */
     display: flex;
@@ -28,16 +31,16 @@ body{
     /* background-image: url(/order-summary-component-main/images/pattern-background-mobile.svg); */
 border-radius: 20px;
 background-color: rgb(255, 255, 255);
-width:100%;
+width:90%;
 height: 750px;
 /* align-items: center; */
 /* align-content: center; */
 justify-content: space-between;
-
+padding: 0 !important;
 }
 .contener3{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:  1fr;
 margin-bottom: 10px;
 }
 .img{

@@ -3,6 +3,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './css/home.css'
 import Spinner from 'react-bootstrap/Spinner';
 import ModalSturtup from './ModalSturtup';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import CallIcon from '@mui/icons-material/Call';
+import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
+import PersonPinIcon from '@mui/icons-material/PersonPin';
+import Card from 'react-bootstrap/Card';
+
 export class Home extends Component {
 
 
@@ -19,6 +25,41 @@ export class Home extends Component {
 
         return (
             <div>
+                  <div className="hero-img">
+          <div className="container h-100">
+            <div className="all-header">
+      
+            </div>
+          </div>
+        </div>
+                   <section className="our-services">
+          <div className="">
+            <div className="our-services-header pb-5 pt-2">
+              <p>Take your first step into the web development world </p>
+            </div>
+            <div className="all-service pt-5 pb-5">
+              <div className="row ">
+                <div className="col d-flex justify-content-center flex-column align-items-center h-50">
+                  <BusinessCenterIcon className="icons" />
+                  <p>Take computer science courses</p>
+                </div>
+                <div className="col d-flex justify-content-center flex-column align-items-center h-50">
+                  <CallIcon className="icons" />
+
+                  <p>Get real employable skills</p>
+                </div>
+                <div className="col d-flex justify-content-center flex-column align-items-center h-50">
+                  <PersonPinIcon className="icons" />
+                  <p>Project-based, active learning</p>
+                </div>
+                <div className="col d-flex justify-content-center flex-column align-items-center h-50">
+                  <AccessAlarmIcon className="icons" />
+                  <p>Learn on your schedule</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
                 <div>
                     <div className="wrapper">
 
@@ -32,13 +73,14 @@ export class Home extends Component {
 
                                 <div className="row-1">
                                     <div class="script">
-                                        <p>Startups are a valuable partner, with our business relationship and cooperation we succeed to attract and gain lots of opportunities which made a difference in our business, we are proud to work with startups where we can build success</p>
                                     </div>
                                 </div>
                             </div>
                         </section>
                     </div>
                 </div>
+
+             
                 {this.props.data.length === 0 ? (
                     <div className='spinner1'>
                         <Spinner className='spinneritem' size='lg' animation="border" variant="primary" />
@@ -48,10 +90,11 @@ export class Home extends Component {
                     </div>
                 ) : (<>
                 <div className='filter-container' >
+        <button onClick={()=>{this.displaystartup('all')}}>{"All"}</button>
                 {this.props.data.map(item1 => {
-               
-               return (
-                   <>
+                    
+                    return (
+                        <>
                 {
                     item1.sectors.map(itemsectors => {
                         return (
@@ -78,10 +121,20 @@ export class Home extends Component {
         
 
    {this.props.selectDataSector.map(item1 => {
-               
+            //    console.log(this.props.selectDataSector)
                return (
                    <>
-                           <img src={item1.LogoImage} alt="nopic"  onClick={()=>{this.displayAsCard(item1.startupName)}}/>
+
+
+<Card border="secondary" className='Card'>
+
+<Card.Body>
+
+         <Card.Img variant="top" src={item1.LogoImage} onClick={()=>{this.displayAsCard(item1.startupName)}} />
+
+</Card.Body>
+
+</Card>
                   
 
                    </>

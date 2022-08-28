@@ -2,8 +2,9 @@ import {React , Component } from 'react'
 // import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-// import './css/modalcard.css'
+import '../css/updatestartup.css';
 // import React, { Component } from 'react'
+import img from '../img/start2.jpg';
 
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -11,16 +12,20 @@ import Row from 'react-bootstrap/Row';
 export class UpdatestartUpdata extends Component {
   render() {
     return (
-      <div>   
-      <Modal  
+      <div  >  
+      <Modal 
+    className='Modal'
          show={this.props.displayCardUpdate} 
-        size={'md'} 
+        size={'xl'} 
         animation={'true'} 
         onHide={this.props.handleCloseUpdatecard}>
    <Modal.Header className='modal-header' closeButton>
    {this.props.selectupdateCrad.startupName}
    </Modal.Header>
-   <Form onSubmit={this.props.updateStartUp}
+   
+        <div   className='modal-pic'>
+          <img src={img} alt={img}/>
+   <Form className='Form-Updata' onSubmit={this.props.updateStartUp}
 
 // onClick={() => {this.RefreshPage()}}
 >
@@ -70,7 +75,11 @@ export class UpdatestartUpdata extends Component {
     Submit
   </Button>
 </Form>
-    </Modal></div>
+</div> 
+    </Modal>
+    
+    
+    </div>
     )
   }
 }

@@ -3,7 +3,8 @@ import axios from "axios";
 import '../css/admin.css'
 import Form2 from './StartupForm'
 import { withAuth0 } from "@auth0/auth0-react";
-
+import sec from '../img/sec.webp'
+import startup from '../img/startup.jpg'
 import{Link,Outlet} from "react-router-dom";
 export class Admain extends Component {
     // end get data
@@ -16,9 +17,10 @@ export class Admain extends Component {
             <div>
 <div >
 <nav className="nav-bar-admain">
-        <Link to="Form2">Startup</Link>
+  
+        <Link to="Form2">sec</Link>
         <br/>
-        <Link to="ScectorForm">Sector</Link>
+        <Link to="ScectorForm">startup</Link>
       </nav>
       <Outlet/>
 </div>
