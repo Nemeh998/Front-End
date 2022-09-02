@@ -16,6 +16,7 @@ import Search from "./Search";
 
 import { withAuth0 } from "@auth0/auth0-react";
 import About from "./About";
+import { New } from './New';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -390,8 +391,15 @@ const { user, isAuthenticated } = this.props.auth0;
                 />}>
               
            
-            </Route>
             <Route path='About' element={<About/>}/>
+            </Route>
+            <Route path='new' element={<New
+                data={this.state.data}
+               
+                />}>
+              
+           
+            </Route>
           </Routes>
           <Footer />
         </Router>

@@ -83,6 +83,11 @@ export class Header extends Component {
                 </Link>
               </Nav.Link>
             </Nav>
+            <Nav.Link href="/new">
+                <Link to="/new" className="home-nav-link">
+                  new
+                </Link>
+              </Nav.Link>
             <Nav className="mr-auto">
             
             </Nav>
