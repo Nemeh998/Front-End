@@ -22,19 +22,19 @@ export class Form2 extends Component {
 </div>
       <div className='contener'>
         {
-          this.props.data.map(item1 => {
+          this.props.data?.map(item1 => {
             return (
               <>
 
                 {
 
-                  item1.sectors.map(itemsectors => {
+                  item1.sectors?.map(itemsectors => {
                     return (
 
                       <>
 
                         {
-                          itemsectors.startup.map((itemstartup, idx) => {
+                          itemsectors.startup?.map((itemstartup, idx) => {
                             console.log(itemstartup)
                             return (
 <div className='pic-button'>
@@ -157,7 +157,7 @@ export class Form2 extends Component {
             <Form.Select defaultValue="Choose..." id="mainSectorName" name="mainSectorName">
               {
 
-                this.props.data.map(item => {
+                this.props.data?.map(item => {
                   return (
                     <>
 
@@ -178,10 +178,10 @@ export class Form2 extends Component {
 
             <Form.Select id="Sectors" name="Sectors" defaultValue="Choose...">
               {
-                this.props.data.map(item => {
+                this.props.data?.map(item => {
                   return (
                     <>
-                      {item.sectors.map(itemsectors => {
+                      {item.sectors?.map(itemsectors => {
                         return (
                           <>
                             <option value={itemsectors._id}>{itemsectors.subSectorname}</option>

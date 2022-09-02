@@ -1,21 +1,15 @@
 import React, {Component} from 'react'
-import Button from 'react-bootstrap/Button';
-// import Form from 'react-bootstrap/Form';
 import './css/search.css'
 import axios from "axios";
 import {
-  Spinner,
   Card,
   Form,
-  OverlayTrigger,
-  Tooltip,
   ListGroup,
 } from "react-bootstrap";
-// import Card from 'react-bootstrap/Card';
+
 export class Search extends Component {
   state = {
-    // allCourses: ,
-    // for select 3 filterations:
+
     filterdStartup: [],
     NumberFilterd: [],
     CityFilterd: [],

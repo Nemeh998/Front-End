@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-// import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
+
+
 import Modal from 'react-bootstrap/Modal';
-import Card from 'react-bootstrap/Card'
+
 import './css/modalcard.css'
-import img from './img/jordan.jpg'
+
 export class ModalSturtup extends Component {
     constructor(props){
     super(props);
@@ -46,9 +46,7 @@ export class ModalSturtup extends Component {
     <p>{this.props.selectDataStartUp.founderName}</p>
       </div>
       </div>
-      {/* <p class="Payment">Proceed to Payment</p> */}
-
-      {/* <button class="cancel">Cancel Order</button> */}
+ 
       <div class="continer2">
       <p>Employees </p>
           <p>city</p>
@@ -61,17 +59,14 @@ export class ModalSturtup extends Component {
         <a href={this.props.selectDataStartUp.websiteURL}><span>{this.props.selectDataStartUp.startupName}</span></a>
         {
       
-      // <span>{year}</span>
+   
         }
       </div>
-    {/* </div> */}
+    
     
       </Modal>
 
-        {/* 
-     
-<p>email Address</p>
-         */}
+       
       
       </>
     )
