@@ -1,240 +1,340 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+// import Form from 'react-bootstrap/Form';
 import './css/search.css'
-// import { Search } from './Search';
+import axios from "axios";
+import {
+  Spinner,
+  Card,
+  Form,
+  OverlayTrigger,
+  Tooltip,
+  ListGroup,
+} from "react-bootstrap";
+// import Card from 'react-bootstrap/Card';
 export class Search extends Component {
   state = {
     // allCourses: ,
     // for select 3 filterations:
-    filterdCourses: [],
-    levelFilterdCourses: [],
-    durationFilterdCourses: [],
-    skillsFilterdCourses: [],
-    levelValue: "all",
-    durationValue: "all",
-    skillsValue: "all",
+    filterdStartup: [],
+    NumberFilterd: [],
+    CityFilterd: [],
+    NumberValue: "all",
+    CityValue: "all",
     // end of select 3 filterations
     searchValue: "",
+    data: []
   };
-  searchFilter = (e) => {
-    
+
+
+  async componentDidMount() {
+    const serverUrl = process.env.REACT_APP_SERVER;
+    const url = `${serverUrl}/getDataHendler`;
+
+    await axios
+      .get(url)
+      .then((response) => {
+        let Arr=[]
+        response.data.map(item1 => {
+          item1.sectors.map(itemsectors => {
+            itemsectors.startup.map(itemstartup => {
+              Arr.push(itemstartup)
+
+            
+
+            })
+          })
+        })
+        this.setState({
+          data: response.data,
+         filterdStartup: Arr
+        });
+      })
+      .catch((err) => {
+        this.setState({err: "There is and error"});
+      });
+  }
+  searchFilter = async(e) => {
+
     e.preventDefault();
     let value = e.target.searchValue.value.toLowerCase();
-
-    // const Regex = new RegExp(value, "g");
-   let newdata=this.props.data.map(item1 => {
+    let Arr = []
+console.log(value)
+    let newdata = await this.state.data.map(item1 => {
       item1.sectors.map(itemsectors => {
+        console.log(itemsectors)
         itemsectors.startup.map(itemstartup => {
-         if(itemstartup.startupName.toLowerCase().includes(value)){
-        console.log(itemstartup)
-        this.setState({ filterdCourses: itemstartup });
-         }
-        })})})
-        console.log(this.state.filterdCourses)
-      };
-      
-      searchChange = (e) => {
-        this.setState({ searchValue: e.target.value });
-      };
-      
+          if (itemstartup.startupName.toLowerCase().includes(value)) {
+            console.log(itemstartup)
+            Arr.push(itemstartup)
+        
+          }
+        })
+      })
+    })
+    this.setState({filterdStartup: Arr});
+    console.log(this.state.filterdStartup,'itemstartup')
+  };
+
+  searchChange = (e) => {
+    this.setState({searchValue: e.target.value});
+  };
 
 
 
+  // ================================
+  // ==============CityFilter==================
+  // ================================
 
-      skillsFilter = (e) => {
-        this.setState({ skillsValue: e.target.value, searchValue: "" });
-        let skillsValue = e.target.value;
-    // const Regex = new RegExp(skillsValue, "g");
+  CityFilter = async (e) => {
+    this.setState({CityValue: e.target.value, searchValue: ""});
+    let CityText = e.target.value;
 
-    console.log(skillsValue)
-        if (
-          skillsValue !== "all"  &&this.state.durationValue === "all"
-        ) {
-          
-          let newdata=this.props.data.map(item1 => {
-            item1.sectors.map(itemsectors => {
-              itemsectors.startup.filter(itemstartup => {
-                if(itemstartup.city){
-
-                  if(itemstartup.city.toLowerCase().includes(skillsValue.toLowerCase())){
-               
-                 this.setState({ filterdCourses: itemstartup,
-                   skillsFilterdCourses: itemstartup });
-               
-                  }
-                  }else{
-                    console.log("nodatain this city")
-                }
-              })})})
-        console.log(this.state.filterdCourses,this.state.skillsFilterdCourses)
-        // =====================================================================
-        }  
-         else if (
-          skillsValue !== "all" &&
-          this.state.durationValue !== "all" 
-       
-        ) {
-          const Regex = new RegExp(e.target.value, "g");
-          let newdata=this.props.data.map(item1 => {
-            item1.sectors.map(itemsectors => {
-              itemsectors.startup.filter(itemstartup => {
-                if(itemstartup.city){
-
-                  if(itemstartup.city.toLowerCase().includes(skillsValue.toLowerCase())){
-               
-                 this.setState({ filterdCourses: itemstartup,
-                   skillsFilterdCourses: itemstartup });
-               
-                  }
-                  }else{
-                    console.log("nodatain this city")
-                }
-              })})})
-        } else if (
-          skillsValue == "all" &&
-          this.state.durationValue !== "all" 
-       
-        ) {
-          const Regex = new RegExp(e.target.value, "g");
-          let newdata = this.state.filterdCourses.filter((course) => {
-            if (course.skills) {
-              let newskills = course.skills.map((skill) => {
-                return skill.toLowerCase();
-              });
-              return Regex.test(newskills);
-            }
-          });
-          this.setState({ filterdCourses: newdata });
-          this.setState({ skillsFilterdCourses: newdata });
-        } 
-      };
-      // ====================================
-      
-  durationFilter = (e) => {
-    this.setState({ durationValue: e.target.value, searchValue: "" });
-    let durationValue = parseInt(e.target.value);
-
-    if (durationValue !== "all" &&this.state.skillsValue === "all"
+    if (
+      CityText !== "all" &&
+      this.state.NumberValue === "all"
     ) {
-      let newdata=this.props.data.map(item1 => {
+      let Arr = []
+      let newdata = await this.state.data.map(item1 => {
         item1.sectors.map(itemsectors => {
           itemsectors.startup.filter(itemstartup => {
-            if(itemstartup.numberOfEmployees){
-
-              if(itemstartup.numberOfEmployees<=durationValue&&durationValue>=0){
-           
-             this.setState({ filterdCourses: itemstartup,
-               skillsFilterdCourses: itemstartup });
-           
+            if (itemstartup.city) {
+              if (itemstartup.city.toLowerCase().includes(CityText.toLowerCase())) {
+                Arr.push(itemstartup)
               }
-              }else{
-                console.log("nodatain this city")
             }
-          })})})
-     
-    } else if (
-      durationValue !== "all" &&
-      this.state.skillsValue === "all" 
-    ) {
-      let newdata=this.props.data.map(item1 => {
-        item1.sectors.map(itemsectors => {
-          itemsectors.startup.filter(itemstartup => {
-            if(itemstartup.numberOfEmployees){
 
-              if(itemstartup.numberOfEmployees<=durationValue&&durationValue>=5){
-           
-             this.setState({ filterdCourses: itemstartup,
-               skillsFilterdCourses: itemstartup });
-           
-              }
-              }else{
-                console.log("nodatain this city")
-            }
-          })})})
-    } else if (
-      durationValue !== "all" &&
-      this.state.skillsValue !== "all" &&
-      this.state.levelValue === "all"
-    ) {
-      let newdata = this.state.skillsFilterdCourses.filter((course) => {
-        let number = parseInt(course.duration);
-        if (e.target.value === "above") {
-          return number >= 4;
-        } else {
-          return number < 4;
-        }
+
+          })
+        })
+      })
+
+      this.setState({
+        filterdStartup: Arr,
+        CityFilterd: Arr
       });
-      this.setState({ filterdCourses: newdata });
-      this.setState({ durationFilterdCourses: newdata });
-    } else if (
-      durationValue !== "all" &&
-      this.state.skillsValue !== "all" &&
-      this.state.levelValue !== "all"
+      console.log(this.state.CityFilterd, this.state.filterdStartup, "CityFilterd")
+      // =====================================================================
+    }
+
+
+    else if (
+      CityText !== "all" &&
+      this.state.NumberValue !== "all"
+
     ) {
-      let newdata = this.state.filterdCourses.filter((course) => {
-        let number = parseInt(course.duration);
-        if (e.target.value === "above") {
-          return number >= 4;
-        } else {
-          return number < 4;
+      let Arr = []
+      console.log(this.state.filterdStartup,'lolo')
+      for (let i = 0;i <= this.state.filterdStartup.length;i++) {
+        if (this.state.filterdStartup[i]?.city.toLowerCase().includes(CityText.toLowerCase())) {
+
+          Arr.push(this.state.filterdStartup[i])
+
+
         }
-      });
-      this.setState({ filterdCourses: newdata });
-      this.setState({ durationFilterdCourses: newdata });
-    } else {
-      if (this.state.levelValue !== "all" && this.state.skillsValue === "all") {
-        this.setState({ filterdCourses: this.state.levelFilterdCourses });
-      } else if (this.state.skillsValue !== "all") {
-        this.setState({ filterdCourses: this.state.skillsFilterdCourses });
-      } else if (
-        this.state.levelValue !== "all" &&
-        this.state.skillsValue !== "all"
-      ) {
-        this.setState({ filterdCourses: this.state.skillsFilterdCourses });
-      } else {
-        this.setState({ filterdCourses: this.state.allCourses });
       }
+
+
+      this.setState({
+        filterdStartup: Arr,
+        CityFilterd: Arr
+      });
+
+      console.log(this.state.CityFilterd, this.state.filterdStartup, "CityFilterd&numer in City")
+      // =====================================================================
     }
   };
-      render() {
+  // ====================================
+  // ===============NumberFilter
+  // =====================================
+  NumberFilter = async (e) => {
+    this.setState({NumberValue: e.target.value, searchValue: ""});
+    let NumberText = Number(e.target.value);
+
+    if (NumberText !== "all" && this.state.CityValue === "all"
+    ) {
+      let Arr = []
+      let newdata = await this.state.data.map(item1 => {
+        item1.sectors.map(itemsectors => {
+          itemsectors.startup.filter(itemstartup => {
+            if (itemstartup.numberOfEmployees) {
+              if (NumberText === 5) {
+
+                if (itemstartup.numberOfEmployees <= 5 && itemstartup.numberOfEmployees >= 0) {
+                  Arr.push(itemstartup)
+
+                }
+              }
+              else if (NumberText === 10) {
+
+                if (itemstartup.numberOfEmployees <= 10 && itemstartup.numberOfEmployees >= 6) {
+
+                  Arr.push(itemstartup)
+
+                }
+              }
+              else if (NumberText === 20) {
+
+                if (itemstartup.numberOfEmployees <= 20 && itemstartup.numberOfEmployees >= 11) {
+
+                  Arr.push(itemstartup)
+
+                }
+              }
+            }
+
+
+
+          })
+        })
+      });
+      console.log(Arr)
+      this.setState({
+        filterdStartup: Arr,
+        NumberFilterd: Arr
+      })
+      console.log(this.state.NumberFilterd, this.state.filterdStartup, 'filterNumber')
+      // ==================================================================
+    }
+
+    else if (
+      NumberText !== "all" &&
+      this.state.CityValue !== "all"
+
+    ) {
+      let Arr = []
+console.log(this.state.filterdStartup)
+      for (let i = 0;i <= this.state.filterdStartup.length;i++) {
+        if (this.state.filterdStartup[i]?.numberOfEmployees) {
+
+          if (NumberText === 5) {
+
+            if (this.state.filterdStartup[i]?.numberOfEmployees <= 5 && this.state.filterdStartup[i]?.numberOfEmployees >= 0) {
+              Arr.push(this.state.filterdStartup[i])
+
+            }
+          }
+
+
+
+
+          else if (NumberText === 10) {
+
+            if (this.state.filterdStartup[i]?.numberOfEmployees <= 10 && this.state.filterdStartup[i]?.numberOfEmployees >= 6) {
+              // console.log(this.state.filterdStartup)
+
+              Arr.push(this.state.filterdStartup[i])
+
+            }
+          }
+
+        }
+        else if (NumberText === 20) {
+
+          if (this.state.filterdStartup[i]?.numberOfEmployees <= 20 && this.state.filterdStartup[i]?.numberOfEmployees >= 11) {
+            // console.log(this.state.filterdStartup)
+
+            Arr.push(this.state.filterdStartup[i])
+
+          }
+        }
+
+      }
+      this.setState({
+        filterdStartup: Arr,
+        NumberFilterd: Arr
+      });
+      console.log(this.state.NumberFilterd, this.state.filterdStartup, 'filterNumber&city')
+
+    }
+    else if (this.state.CityValue !== "all") {
+      this.setState({filterdCourses: this.state.CityFilterd});
+      console.log(this.state.NumberFilterd, this.state.filterdStartup)
+
+    }
+    else {
+      this.setState({filterdCourses: this.state.data});
+      console.log(this.state.NumberFilterd, this.state.filterdStartup)
+
+    }
+
+  }
+
+  render() {
+    let img = []
+    for (let i = 0;i < this.state.filterdStartup.length;i++) {
+
+      img.push(
+        <Card   className='Card'>
+          <Card.Img variant="top" src={this.state.filterdStartup[i].LogoImage} />
+          <Card.Body>
+            <Card.Title>{this.state.filterdStartup[i].startupName}</Card.Title>
+         
+          </Card.Body>
+
+          <ListGroup className="list-group-flush">
+            <ListGroup.Item>Employees :{this.state.filterdStartup[i].numberOfEmployees}</ListGroup.Item>
+            <ListGroup.Item>city :{this.state.filterdStartup[i].city}</ListGroup.Item>
+
+          </ListGroup>
+
+        </Card>
+      )
+      //  LogoImage: 
+      //  city: 
+      //  emailAddress: ""
+      //  founderName: 
+      //  numberOfEmployees: 
+      //  startupName: 
+      //  websiteURL:
+      //  yearOfEstablishment:
+      //  _id: 
+    }
+
+//     let date = this.props.selectDataStartUp.yearOfEstablishment?.split("-");
+//     console.log(date[0])
+// let 
     return (
-      <div className="search-container">
-              
-                <Form onSubmit={this.searchFilter}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label className="d-block">Search Courses</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="What you want to learn"
-                className="course-search-input"
-                name="searchValue"
-                value={this.state.searchValue}
-                onChange={this.searchChange}
-              />
-              <input
-                type="submit"
-                value="Search"
-                className="course-search-btn btn btn-success"
-              />
-            </Form.Group>
-          </Form>
-          {/* =============================== */}
-          <div className="select-container">
-            <Form.Group controlId="exampleForm.SelectCustom1">
-              <Form.Label>Level</Form.Label>
-              <Form.Control
-                as="select"
-                name="level"
-                onChange={this.levelFilter}
-              >
-                <option value="all">All</option>
-                <option value="5">0-5</option>
-                <option value="10">6-10</option>
-                <option value="20">11-20</option>
-              </Form.Control>
-            </Form.Group>
-            <Form.Group controlId="exampleForm.SelectCustom2">
+      <>
+          <div className="blog ">
+          <div className="container">
+            <div className="blog-header-img">
+           
+
+        <Form onSubmit={this.searchFilter}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label className="d-block">Search Startup</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="search"
+              className="course-search-input"
+              name="searchValue"
+              value={this.state.searchValue}
+              onChange={this.searchChange}
+            />
+            <input
+              type="submit"
+              value="Search"
+              className="course-search-btn btn btn-primary"
+            />
+          </Form.Group>
+        </Form>
+        {/* =============================== */}
+        <div className="select-container">
+          <Form.Group controlId="exampleForm.SelectCustom1">
+            <Form.Label className='label'>Level</Form.Label>
+            <Form.Control
+              as="select"
+              name="level"
+              onChange={this.NumberFilter}
+            >
+              <option value="all">All</option>
+              <option value={5}>0-5</option>
+              <option value={10}>6-10</option>
+              <option value={20}>11-20</option>
+            </Form.Control>
+          </Form.Group>
+          {/* <Form.Group controlId="exampleForm.SelectCustom2">
               <Form.Label>Duration</Form.Label>
               <Form.Control
                 as="select"
@@ -245,41 +345,48 @@ export class Search extends Component {
                 <option value="above"> {">= month"} </option>
                 <option value="less">{"< month"}</option>
               </Form.Control>
-            </Form.Group>
-            <Form.Group controlId="exampleForm.SelectCustom3">
-              <Form.Label>city</Form.Label>
-              <Form.Control
-                as="select"
-                name="skills"
-                onChange={this.skillsFilter}
-              >
-                <option value="all">All</option>
-                <option value="Amman">Amman</option>
-                <option value="Balqa ">Balqa</option>
-                <option value="Madaba ">Madaba </option>
-                <option value="Zarqa ">Zarqa </option>
-                <option value="Ajlun ">Ajlun </option>
-                <option value="Irbid">Irbid</option>
-                <option value="Mafraq ">Mafraq </option>
-                <option value="Aqaba ">Aqaba </option>
-                <option value="Karak ">Networking</option>
-                <option value="Ma'an ">Ma'an </option>
-                <option value="Tafilah  ">Tafilah  </option>
-              </Form.Control>
-            </Form.Group>
+            </Form.Group> */}
+          <Form.Group controlId="exampleForm.SelectCustom3">
+            <Form.Label className='label'>city</Form.Label>
+            <Form.Control
+              as="select"
+              name="City"
+              onChange={this.CityFilter}
+            >
+              <option value="all">All</option>
+              <option value="Amman">Amman</option>
+              <option value="Balqa ">Balqa</option>
+              <option value="Madaba ">Madaba </option>
+              <option value="Zarqa ">Zarqa </option>
+              <option value="Ajlun ">Ajlun </option>
+              <option value="Irbid">Irbid</option>
+              <option value="Mafraq ">Mafraq </option>
+              <option value="Aqaba ">Aqaba </option>
+              <option value="Karak ">Networking</option>
+              <option value="Ma'an ">Ma'an </option>
+              <option value="Tafilah  ">Tafilah  </option>
+            </Form.Control>
+          </Form.Group>
+        </div>
+
+      </div>
             </div>
-          {/* <div>
-          {this.state.filterdCourses.map((item1)=>{
-            return(
-              <> */}
-          <img src={this.state.filterdCourses.LogoImage} alt="nopic"/>
-              {/* </>
-            )
-          })}
-
-
-          </div> */}
           </div>
+      
+      
+
+        <div className='AppHome'>
+          <div className='companycard'>
+
+            {img}
+
+
+          </div>
+        </div>
+
+
+
+     </>
     )
   }
 }

@@ -18,9 +18,9 @@ export class Admain extends Component {
 <div >
 <nav className="nav-bar-admain">
   
-        <Link to="Form2">sec</Link>
-        <br/>
-        <Link to="ScectorForm">startup</Link>
+        {/* <Link className='Link 'to="Form2">Startup</Link> */}
+       
+        <Link className='Link ' to="ScectorForm">Sectors</Link>
       </nav>
       <Outlet/>
 </div>
@@ -39,7 +39,7 @@ export class Admain extends Component {
                 
         ):(
 
-          alert("you sould log in!")
+          <div> login</div>
         )
     }
 }

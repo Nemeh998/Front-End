@@ -20,6 +20,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      err:"",
       data: [],
       sectorsData: [],
       // modal startup
@@ -57,9 +58,25 @@ class App extends React.Component {
     await axios
       .get(url)
       .then((response) => {
-        this.setState({
-          data: response.data,
-        });
+        console.log( response.data)
+        let Arr=[]
+        response.data.map(item1 => {
+          item1.sectors.map(itemsectors => {
+           
+            for (let i=0;i<=itemsectors.startup.length;i++){
+           if(itemsectors.startup[i]){
+                Arr.push(itemsectors.startup[i])
+           }
+            }
+            console.log("=============================================")
+        })
+      })
+      
+      this.setState({
+        data: response.data,
+        selectDataSector:Arr
+      });
+      console.log(this.state.selectDataSector)
       })
       .catch((err) => {
         this.setState({err: "There is and error"});
@@ -67,31 +84,53 @@ class App extends React.Component {
   }
   //========================================
   // delete sectors
-  deleteSectors = async (mainSectorid,sectorsId ) => {
+  deleteSectors =  (mainSectorid,sectorsId ) => {
 
     const serverUrl = process.env.REACT_APP_SERVER;
-
-    const url = await axios.delete(`${serverUrl}/deletSectorsDataHendler?sectorid=${sectorsId}&mainSectorid=${mainSectorid}`);
-    this.setState({
-      data: url.data,
-    })
-    // this.componentDidMount()
+let deletesectors={
+  sectorsId:sectorsId,
+  mainSectorid:mainSectorid
+}
+    axios
+    .delete(`${serverUrl}/deletSectorsDataHendler`,{
+         params:deletesectors,
+       }).then((response)=>{
+   
+         this.setState({
+           data: response.data,
+       
+         });
+         window.location.reload();
+       }).catch((err)=>{
+         this.setState({err: err.message})
+       });
   
   }
   // ================================================
   // delete start up data
-  deleteStartUp = async (mainSectorid, sectorsId, startupid, idx) => {
-
+  deleteStartUp = (mainSectorid, sectorsId, startupid, idx) => {
+let deletestartup={mainSectorid:mainSectorid,sectorsId:sectorsId,startupid:startupid,idx:idx};
     const serverUrl = process.env.REACT_APP_SERVER;
+    // ?sectorid=${sectorsId}&mainSectorid=${mainSectorid}&startupid=${startupid}&idx=${idx}`);
+ axios
+ .delete(`${serverUrl}/deletStartUpDataHendler`,{
+      params:deletestartup,
+    }).then((response)=>{
 
-    const url = await axios.delete(`${serverUrl}/deletStartUpDataHendler?sectorid=${sectorsId}&mainSectorid=${mainSectorid}&startupid=${startupid}&idx=${idx}`);
-    this.setState({
-      data: url.data,
-      filter:url.data
+      this.setState({
+        data: response.data,
+        filter:response.data
+  
+      });
+      window.location.reload();
+    }).catch((err)=>{
+      this.setState({err: err.message})
+    });
 
-    })
-    // this.componentDidMount()
-  }
+
+    
+      
+  };
   // ============================================
   // add start up data
   addstartupsData = async (e) => {
@@ -110,12 +149,12 @@ class App extends React.Component {
     }
     const serverUrl = process.env.REACT_APP_SERVER;
 
-
+console.log(newStartups)
     let startupsData = await axios.post(`${serverUrl}/postDataHendler`, newStartups)
     this.setState({
       data: startupsData.data,
     });
-    // this.componentDidMount()
+      window.location.reload();
   };
 
   // ====================================================
@@ -134,7 +173,7 @@ class App extends React.Component {
     this.setState({
       data: sectorsData.data,
     });
-    // this.componentDidMount()
+      window.location.reload();
   }
   // ==========================================================
   updateStartUp=async(e)=>{
@@ -159,7 +198,7 @@ class App extends React.Component {
     this.setState({
       data: startupsData.data,
     });
-
+    window.location.reload();
   }
     // modal render
     displayUpdateCardAsModel = (item_id,itemstartup_id,itemsectors_id, idx_id) => {
@@ -205,7 +244,7 @@ class App extends React.Component {
       item1.sectors.map(itemsectors => {
         itemsectors.startup.map(itemstartup => {
 
-          if (itemstartup.startupName === clickStartupImg) {
+          if (itemstartup._id === clickStartupImg) {
             const selectDataStartUp = itemstartup;
             // console.log('find', selectDataStartUp)
             this.setState({
@@ -244,7 +283,7 @@ class App extends React.Component {
               filterData:this.state.filterData.push(itemsectors)
             })
           }
-          
+                                                                      
         }
       })
       console.log(this.state.filterData)
@@ -260,22 +299,23 @@ class App extends React.Component {
 // componentDidMount = () => {
 //  this.filterdSector;
 // };
-filterdSector=(subSectorname)=>{
+filterdSector=(subSectorid)=>{
 let Arr=[]
   this.state.data.map(item1 => {
     item1.sectors.map(itemsectors => {
-      if (itemsectors.subSectorname === subSectorname) {
+      if (itemsectors._id === subSectorid) {
         const selectDataSector = itemsectors.startup;
+
         this.setState({
           selectDataSector: selectDataSector,
           displaystartupCard: true,
         });
         console.log('SectorName', selectDataSector);
       }
-      else {
+      else if(subSectorid==='all'){
       for (let i=0;i<=itemsectors.startup.length;i++){
         if(itemsectors.startup[i]){
-
+console.log(itemsectors.startup[i])
           Arr.push(itemsectors.startup[i])
         }
       }
@@ -286,7 +326,7 @@ let Arr=[]
       }
     });
   });
-  console.log(Arr)
+  console.log(this.state.selectDataSector)
 }
 
 render() {

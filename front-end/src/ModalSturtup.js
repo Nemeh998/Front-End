@@ -14,11 +14,13 @@ export class ModalSturtup extends Component {
 }
 
   render() {
+ 
+
     return (
       <>
         
         <Modal     show={this.props.displayCard} 
-          size={ 'sm'} 
+          size={ 'lg'} 
           animation={'true'} 
           onHide={this.props.handleClose}
           class="counter">
@@ -57,7 +59,10 @@ export class ModalSturtup extends Component {
           <span>{this.props.selectDataStartUp.city}</span>
           
         <a href={this.props.selectDataStartUp.websiteURL}><span>{this.props.selectDataStartUp.startupName}</span></a>
-      <span>{this.props.selectDataStartUp.yearOfEstablishment}</span>
+        {
+      
+      // <span>{year}</span>
+        }
       </div>
     {/* </div> */}
     

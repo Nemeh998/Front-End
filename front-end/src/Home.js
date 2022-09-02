@@ -10,7 +10,7 @@ import PersonPinIcon from '@mui/icons-material/PersonPin';
 import Card from 'react-bootstrap/Card';
 
 export class Home extends Component {
-
+   
 
     displayAsCard = (data) => {
         this.props.displayCardAsModel(data)
@@ -35,26 +35,29 @@ export class Home extends Component {
                    <section className="our-services">
           <div className="">
             <div className="our-services-header pb-5 pt-2">
-              <p>Take your first step into the web development world </p>
+              <p>Your Gateway
+to the Jordanian
+Entrepreneurship
+Ecosystem </p>
             </div>
             <div className="all-service pt-5 pb-5">
               <div className="row ">
                 <div className="col d-flex justify-content-center flex-column align-items-center h-50">
                   <BusinessCenterIcon className="icons" />
-                  <p>Take computer science courses</p>
+                  <p>To provide members with a platform</p>
                 </div>
                 <div className="col d-flex justify-content-center flex-column align-items-center h-50">
                   <CallIcon className="icons" />
 
-                  <p>Get real employable skills</p>
+                  <p>Increase your customers</p>
                 </div>
                 <div className="col d-flex justify-content-center flex-column align-items-center h-50">
                   <PersonPinIcon className="icons" />
-                  <p>Project-based, active learning</p>
+                  <p>Introduction about you</p>
                 </div>
                 <div className="col d-flex justify-content-center flex-column align-items-center h-50">
                   <AccessAlarmIcon className="icons" />
-                  <p>Learn on your schedule</p>
+                  <p>Save time to reach you</p>
                 </div>
               </div>
             </div>
@@ -97,10 +100,11 @@ export class Home extends Component {
                         <>
                 {
                     item1.sectors.map(itemsectors => {
+                        console.log(itemsectors ,"test")
                         return (
                             <>
 
-                                    <button onClick={()=>{this.displaystartup(itemsectors.subSectorname)}}>{itemsectors.subSectorname}</button>
+                                    <button onClick={()=>{this.displaystartup(itemsectors._id)}}>{itemsectors.subSectorname}</button>
                                    
                             </>
                         )
@@ -130,7 +134,7 @@ export class Home extends Component {
 
 <Card.Body>
 
-         <Card.Img variant="top" src={item1.LogoImage} onClick={()=>{this.displayAsCard(item1.startupName)}} />
+         <Card.Img variant="top" src={item1?.LogoImage} onClick={()=>{this.displayAsCard(item1?._id)}} />
 
 </Card.Body>
 

@@ -14,7 +14,13 @@ export class ScectorForm extends Component {
   render() {
     return (
       <>
+      <div className="container2">
+
         <h1 className='h1-des'>Sector</h1>
+        <hr />
+
+      </div>
+     
         <div className='contener'>
 
           {
@@ -57,11 +63,20 @@ export class ScectorForm extends Component {
 
 
 
+<div className="container2">
+            <h1> add secrors</h1>
+            <hr />
 
+ </div>
           {/* ================== */}
+          <div className='all-form-pic'>
+
+<div className='AddStartup-form'>
+<div className='img'>
+  {/* <img src={section}/> */}
+</div>
 
           < div className="Form-2" >
-            <h1> add secrors</h1>
             <Form onSubmit={this.props.addsectorsData}
             >
               <Row className="mb-3">
@@ -104,8 +119,9 @@ export class ScectorForm extends Component {
                 Submit
               </Button>
             </Form>
-          </div >
-
+            </div >
+            </div >
+          </div>
         </>
         )
   }

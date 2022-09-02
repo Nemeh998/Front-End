@@ -15,7 +15,11 @@ export class Form2 extends Component {
   }
   render() {
     return (<>
-      <h1 className='h1-des'>startup</h1>
+    
+<div  className="container2">
+
+      <h1  style={{ margin: '1%' }} className='h1-des'>startup</h1>
+</div>
       <div className='contener'>
         {
           this.props.data.map(item1 => {
@@ -31,6 +35,7 @@ export class Form2 extends Component {
 
                         {
                           itemsectors.startup.map((itemstartup, idx) => {
+                            console.log(itemstartup)
                             return (
 <div className='pic-button'>
 <Card border="secondary" className='cardDelAdd'>
@@ -43,7 +48,8 @@ export class Form2 extends Component {
                        <div className='contbtn'>         
 
 <button onClick={() => {this.props.displayUpdateCardAsModel(item1._id,itemstartup._id,itemsectors._id, idx)}}><EditIcon/></button>
-<button onClick={() => {this.props.deleteStartUp(item1._id, itemsectors._id, itemstartup._id, idx)}}> <DeleteIcon/> </button> 
+<button onClick={() => {this.props.deleteStartUp(item1._id, itemsectors._id, itemstartup._id, idx);this.RefreshPage() }
+}> <DeleteIcon/> </button> 
 </div>
 </Card.Footer>
 </Card>
@@ -72,8 +78,9 @@ export class Form2 extends Component {
 
 
 
+      <div className="container2">
         <h1> add startup</h1>
-
+</div>
       {/* ================== */}
       <div className='all-form-pic'>
 
@@ -186,14 +193,14 @@ export class Form2 extends Component {
                 })}
             </Form.Select>
           </Form.Group>
-          <Button variant="primary" type="submit" OnClick={this.refreshPage} >
+          <Button variant="primary" type="submit"  >
             Submit
           </Button>
         </Form>
       </div >
 
-
       </div>
+      
       </div>
       <UpdatestartUpdata
         updateStartUp={this.props.updateStartUp}

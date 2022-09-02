@@ -112,19 +112,6 @@ hr {
   width: 35%;
 }
 /* cardstartup=================== */
-.AppHome{
-  margin: 5% 10%;
-
-}
-.companycard{
-display: grid;
-background-color: rgb(253, 255, 255);
-grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
-column-gap: 3rem;
-row-gap: 2rem;
-/* border-radius:1rem ; */
-margin-bottom: 30rem;
-}
 
 /* button filterd */
 .filter-container{
@@ -156,9 +143,22 @@ cursor: pointer;
   color: wheat;
 }
 
+.AppHome{
+  margin: 5% 10%;
+
+}
+.companycard{
+display: grid;
+background-color: rgb(253, 255, 255);
+grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+column-gap: 3rem;
+row-gap: 2rem;
+/* border-radius:1rem ; */
+margin-bottom: 30rem;
+}
 .companycard .Card{
 box-shadow: 5px 10px 10px rgb(185, 181, 181);
-  
+
 }
 .companycard img{
   border-radius: 0.5rem;
