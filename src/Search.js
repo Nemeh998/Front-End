@@ -29,9 +29,9 @@ export class Search extends Component {
       .get(url)
       .then((response) => {
         let Arr=[]
-        response.data.map(item1 => {
-          item1.sectors.map(itemsectors => {
-            itemsectors.startup.map(itemstartup => {
+        response.data?.map(item1 => {
+          item1.sectors?.map(itemsectors => {
+            itemsectors.startup?.map(itemstartup => {
               Arr.push(itemstartup)
 
             
@@ -54,10 +54,10 @@ export class Search extends Component {
     let value = e.target.searchValue.value.toLowerCase();
     let Arr = []
 console.log(value)
-    let newdata = await this.state.data.map(item1 => {
-      item1.sectors.map(itemsectors => {
+    let newdata = await this.state.data?.map(item1 => {
+      item1.sectors?.map(itemsectors => {
         console.log(itemsectors)
-        itemsectors.startup.map(itemstartup => {
+        itemsectors.startup?.map(itemstartup => {
           if (itemstartup.startupName.toLowerCase().includes(value)) {
             console.log(itemstartup)
             Arr.push(itemstartup)
@@ -89,8 +89,8 @@ console.log(value)
       this.state.NumberValue === "all"
     ) {
       let Arr = []
-      let newdata = await this.state.data.map(item1 => {
-        item1.sectors.map(itemsectors => {
+      let newdata = await this.state.data?.map(item1 => {
+        item1.sectors?.map(itemsectors => {
           itemsectors.startup.filter(itemstartup => {
             if (itemstartup.city) {
               if (itemstartup.city.toLowerCase().includes(CityText.toLowerCase())) {
@@ -148,28 +148,28 @@ console.log(value)
     if (NumberText !== "all" && this.state.CityValue === "all"
     ) {
       let Arr = []
-      let newdata = await this.state.data.map(item1 => {
-        item1.sectors.map(itemsectors => {
+      let newdata = await this.state.data?.map(item1 => {
+        item1.sectors?.map(itemsectors => {
           itemsectors.startup.filter(itemstartup => {
             if (itemstartup.numberOfEmployees) {
-              if (NumberText === 5) {
+              if (NumberText === 50) {
 
-                if (itemstartup.numberOfEmployees <= 5 && itemstartup.numberOfEmployees >= 0) {
+                if (itemstartup.numberOfEmployees <= 50 && itemstartup.numberOfEmployees >= 0) {
                   Arr.push(itemstartup)
 
                 }
               }
-              else if (NumberText === 10) {
+              else if (NumberText === 100) {
 
-                if (itemstartup.numberOfEmployees <= 10 && itemstartup.numberOfEmployees >= 6) {
+                if (itemstartup.numberOfEmployees <= 100 && itemstartup.numberOfEmployees >= 51) {
 
                   Arr.push(itemstartup)
 
                 }
               }
-              else if (NumberText === 20) {
+              else if (NumberText === 200) {
 
-                if (itemstartup.numberOfEmployees <= 20 && itemstartup.numberOfEmployees >= 11) {
+                if (itemstartup.numberOfEmployees <= 200 && itemstartup.numberOfEmployees >= 101) {
 
                   Arr.push(itemstartup)
 
@@ -201,9 +201,9 @@ console.log(this.state.filterdStartup)
       for (let i = 0;i <= this.state.filterdStartup.length;i++) {
         if (this.state.filterdStartup[i]?.numberOfEmployees) {
 
-          if (NumberText === 5) {
+          if (NumberText === 50) {
 
-            if (this.state.filterdStartup[i]?.numberOfEmployees <= 5 && this.state.filterdStartup[i]?.numberOfEmployees >= 0) {
+            if (this.state.filterdStartup[i]?.numberOfEmployees <= 50 && this.state.filterdStartup[i]?.numberOfEmployees >= 0) {
               Arr.push(this.state.filterdStartup[i])
 
             }
@@ -212,10 +212,9 @@ console.log(this.state.filterdStartup)
 
 
 
-          else if (NumberText === 10) {
+          else if (NumberText === 100) {
 
-            if (this.state.filterdStartup[i]?.numberOfEmployees <= 10 && this.state.filterdStartup[i]?.numberOfEmployees >= 6) {
-              // console.log(this.state.filterdStartup)
+            if (this.state.filterdStartup[i]?.numberOfEmployees <= 100 && this.state.filterdStartup[i]?.numberOfEmployees >= 51) {
 
               Arr.push(this.state.filterdStartup[i])
 
@@ -223,10 +222,9 @@ console.log(this.state.filterdStartup)
           }
 
         }
-        else if (NumberText === 20) {
+        else if (NumberText === 200) {
 
-          if (this.state.filterdStartup[i]?.numberOfEmployees <= 20 && this.state.filterdStartup[i]?.numberOfEmployees >= 11) {
-            // console.log(this.state.filterdStartup)
+          if (this.state.filterdStartup[i]?.numberOfEmployees <= 200 && this.state.filterdStartup[i]?.numberOfEmployees >= 101) {
 
             Arr.push(this.state.filterdStartup[i])
 
@@ -262,17 +260,18 @@ console.log(this.state.filterdStartup)
         <Card   className='Card'>
           <Card.Img variant="top" src={this.state.filterdStartup[i].LogoImage} />
           <Card.Body>
-            <Card.Title>{this.state.filterdStartup[i].startupName}</Card.Title>
+            <Card.Title className="startupName">{this.state.filterdStartup[i].startupName}</Card.Title>
          
           </Card.Body>
 
           <ListGroup className="list-group-flush">
-            <ListGroup.Item>Employees :{this.state.filterdStartup[i].numberOfEmployees}</ListGroup.Item>
-            <ListGroup.Item>city :{this.state.filterdStartup[i].city}</ListGroup.Item>
+            <ListGroup.Item className="Employees">Employees :{this.state.filterdStartup[i].numberOfEmployees}</ListGroup.Item>
+            <ListGroup.Item className="city">{this.state.filterdStartup[i].city}</ListGroup.Item>
 
           </ListGroup>
 
         </Card>
+        
       )
       //  LogoImage: 
       //  city: 
@@ -323,9 +322,9 @@ console.log(this.state.filterdStartup)
               onChange={this.NumberFilter}
             >
               <option value="all">All</option>
-              <option value={5}>0-5</option>
-              <option value={10}>6-10</option>
-              <option value={20}>11-20</option>
+              <option value={50}>0-50</option>
+              <option value={100}>51-100</option>
+              <option value={200}>101-200</option>
             </Form.Control>
           </Form.Group>
           {/* <Form.Group controlId="exampleForm.SelectCustom2">
@@ -356,7 +355,7 @@ console.log(this.state.filterdStartup)
               <option value="Irbid">Irbid</option>
               <option value="Mafraq ">Mafraq </option>
               <option value="Aqaba ">Aqaba </option>
-              <option value="Karak ">Networking</option>
+              <option value="Karak ">Karak</option>
               <option value="Ma'an ">Ma'an </option>
               <option value="Tafilah  ">Tafilah  </option>
             </Form.Control>

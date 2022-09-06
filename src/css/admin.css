@@ -1,116 +1,96 @@
+.nav-admin{
+  padding-top: 12vh;
+  color: gray;
+  grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  padding-top: 12vh;
+  margin: 5% 30% 10% 30%;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  margin: 5% 30% 0 30%;
+}
+.nav-admin a{
+font-size: 2rem;
+  color:   rgb(172, 73, 225);
+   text-decoration: none;
+}
 
- @charset "UTF-8";
- @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
-/* header{
-     height: 57vh;    
-     background-image: linear-gradient(to right bottom,#091268a7,rgba(145, 163, 218, 0)),url('../img/startup.jpg');
-     background-size: cover;
-     background-position: top;
-     position: relative;
-     display: block;
-     padding: 20px;
-     clip-path: polygon(0 0 ,100% 0 ,100% 50vh ,0 80%);
-     text-align: center;
-} */
- 
- .nav-bar-admain{
-     margin: 0 0 0 60%;
-     text-align: end;
-     width: 30%;
-     margin-top: 100px;
-     column-gap: 20px;
-      display: flex;
-      background-color: rgb(255, 255, 255);
-      text-align: center;
-   flex-direction: row;
+  .dropdown-toggle {
+    background-color: rgb(172, 73, 225)!important;
+    white-space: nowrap;
+    width: 50px !important;
+    height: 40px !important;
+    border-radius: 6rem ;
+  }
+   .button-indrop{
+        font-size: 0.5rem;
+        border: none;
+        color: hsl(245, 75%, 52%);
+        background-color: white;
+      padding: 0
+      !important;
+        border-radius:1px !important;
+  }
+  .all-button{
+width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+  }
 
-      /* justify-content: space-between; */
-      /* align-content: space-between; */
-      /* text-decoration: none; */
-      /* font-size: 3rem; */
-    align-items:flex-end;
-    justify-content: flex-end;
+  .all-button img{
+    border-radius: 50%;
+    width: 100%;
+    vertical-align: middle;
+    height: 100%;
+  /* border: 1px solid salmon; */
 
- }
- .canitem{
-      width: 100%;
-      height: 100%;
-      padding-top: 100px;
-      padding-bottom: 50px;
-  
- }
- 
-     .nav-bar-admain .Link {
-          --s: .25em; /* control the wave*/
-          
-          padding: .2em .2em;
-          background-color: #2835bf;
-          color: #fff;
-          --_s: calc(var(--s)*4) 51% repeat-x;
-          --_r: calc(1.345*var(--s)) at left 50%;
-          --_g1: #000 99%,#0000 101%;
-          --_g2: #0000 99%,#000 101%;
-          --mask:
-            radial-gradient(var(--_r) top    calc(var(--s)* 1.9),var(--_g1)) 
-             calc(50% - 2*var(--s) - var(--_i,0px)) 0/var(--_s),
-            radial-gradient(var(--_r) top    calc(var(--s)*-0.9),var(--_g2)) 
-             calc(50% - var(--_i,0px)) var(--s)/var(--_s),
-            radial-gradient(var(--_r) bottom calc(var(--s)* 1.9),var(--_g1)) 
-             calc(50% - 2*var(--s) + var(--_i,0px)) 100%/var(--_s),
-            radial-gradient(var(--_r) bottom calc(var(--s)*-0.9),var(--_g2)) 
-             calc(50% + var(--_i,0px)) calc(100% - var(--s))/var(--_s);
-          -webkit-mask: var(--mask);
-                  mask: var(--mask);
-          clip-path: polygon(
-            calc(2*var(--s) - var(--_i,0px)) 0,
-            calc(100%       - var(--_i,0px)) 0, 
-            calc(100% - var(--s)) 50%,
-            calc(100% - 2*var(--s) + var(--_i,0px)) 100%,
-            calc(0%                + var(--_i,0px)) 100%, 
-            var(--s) 50%);
-          cursor: pointer;
-          transition: .35s;
-        }
-        .nav-bar-admain .Link.alt {
-          clip-path: polygon(
-            calc(0%                - var(--_i,0px)) 0,
-            calc(100% - 2*var(--s) - var(--_i,0px)) 0, 
-            calc(100% - var(--s)) 50%,
-            calc(100%       + var(--_i,0px)) 100%,
-            calc(2*var(--s) + var(--_i,0px)) 100%, 
-            var(--s) 50%);
-        }
-        .nav-bar-admain .Link:hover {
-          --_i: calc(2*var(--s));
-        }
-        .nav-bar-admain .Link.alt:hover {
-          --_i: calc(-2*var(--s));
-        }
-        .nav-bar-admain .Link:active {
-          background-image: linear-gradient(#0004 0 0);
-        }
-        .nav-bar-admain .Link:focus-visible {
-          -webkit-mask: none;
-          clip-path: none;
-          outline-offset: .1em;
-          padding-block: .2em;
-          margin-block: .2em;
-          transition: 0s;
-        }
-        
-    
-        .nav-bar-admain .Link {
-          font-family: system-ui, sans-serif;
-          font-weight: bold;
-          font-size: 4rem;
-          margin: 0;
-          cursor: pointer;
-          border: none;
-        }
+}
+.all-button .text{
+  text-align: center;
+  padding: 17%;
+  color: black;
+  font-size: 1.5rem;
+  /* border: 1px solid salmon; */
+}
+.row{
+  /* border: 1px solid salmon; */
+  padding: 30px;
+}
+  .dropdown-menu {
+    --bs-dropdown-min-width: 25rem !important;
+  }
+  .accordion-button:not(.collapsed) {
+    background-color: white !important;
+  }
+  .accordion-button:focus {
+    border-color: white !important;
+  }
 
- 
+  .dropdown-toggle::after {
+    border: none !important;
+  }
+  .btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg:rgb(227, 187, 232) !important;
+    --bs-btn-border-color: #fff !important;
+    --bs-btn-hover-color: rgb(252, 252, 252)!important ;
+    --bs-btn-hover-bg: rgb(130, 124, 124) !important;
+    --bs-btn-hover-border-color: #fff !important;
+  --bs-btn-focus-shadow-rgb: #fff !important;
+  --bs-btn-disabled-color: #fff !important; 
+  --bs-btn-disabled-bg: #fff !important;
+  --bs-btn-disabled-border-color: #fff !important;
+} 
 
- @media (max-width: 800px) {
- .container td:nth-child(4),
- .container th:nth-child(4) { display: none; }
- }
+.css-i4bv87-MuiSvgIcon-root {
+  font-size: 2.2rem !important;
+}
+
+
+
+.tow{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

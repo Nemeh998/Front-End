@@ -37,17 +37,7 @@ export class Header extends Component {
       >
          <div className="container">
           <Navbar.Brand href="#home" className="m-auto"> 
-              {/* <img
-              alt=""
-              src={logo}
-              width="80"
-              height="80"
-              className="d-inline-block align-top"
-            />  */}
-            {/* <div className="barnd-text">
-              <p>Course</p>
-              <p>Camp</p>
-            </div>  */}
+            
 
 <div id="navbarContainer">
     <div id="logo" class="logo">
@@ -76,6 +66,8 @@ export class Header extends Component {
                 </Link>
               </Nav.Link>
 
+      
+          
 
               <Nav.Link href="/About">
                 <Link to="/About" className="home-nav-link">
@@ -83,14 +75,7 @@ export class Header extends Component {
                 </Link>
               </Nav.Link>
             </Nav>
-            <Nav.Link href="/new">
-                <Link to="/new" className="home-nav-link">
-                  new
-                </Link>
-              </Nav.Link>
-            <Nav className="mr-auto">
-            
-            </Nav>
+        
           </Navbar.Collapse>
         </div>
       </Navbar>

@@ -5,6 +5,9 @@ display: grid;
 grid-template-columns: 1fr 1fr;
 
 }
+.form-label{
+color: black !important;
+}
 .modal-header{
     font-size: 2rem;
 }
@@ -17,6 +20,7 @@ grid-template-columns: 1fr 1fr;
         /* margin: 100px auto; */
     display: table;
     padding:  0 1em 0;
+    color: black;
     font-size: 1.5rem;
 
     }

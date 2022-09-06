@@ -26,7 +26,7 @@ export class ModalSturtup extends Component {
           class="counter">
       
     <div className='contener3'>
-        {/* <div > */}
+  
         <div className='img'>
 
       <img

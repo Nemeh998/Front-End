@@ -1,0 +1,42 @@
+.contener-side-pic{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.task-box {
+    position: relative;
+    border-radius: 12px;
+    width: 90%;
+    margin: 20px 0;
+    padding: 16px;
+    cursor: pointer;
+    background-color: rgba(137, 43, 226, 0.497);
+    box-shadow: 2px 2px 4px 0px rgba(235,235,235,1);
+    
+  }
+  .task-box:hover {
+    transform: scale(1.02);
+  }
+    .time { margin-bottom: 6px; opacity: 0.4; font-size: 10px; }
+    
+    .task-name { 
+      font-size: 14px; 
+      font-weight: 500;
+      opacity: 0.6;
+    }
+  * {
+    box-sizing: border-box;
+    outline: none;
+    }
+    .right-bar{
+
+      background-color: gray;
+    }
+    .right-content{
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 5px;
+      margin-left: 2%;
+      margin-right: 2%;
+    }
+  

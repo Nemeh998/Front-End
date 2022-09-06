@@ -1,9 +1,7 @@
 import {React , Component } from 'react'
-// import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import '../css/updatestartup.css';
-// import React, { Component } from 'react'
 import img from '../img/start2.jpg';
 
 import Col from 'react-bootstrap/Col';
@@ -27,10 +25,9 @@ export class UpdatestartUpdata extends Component {
           <img src={img} alt={img}/>
    <Form className='Form-Updata' onSubmit={this.props.updateStartUp}
 
-// onClick={() => {this.RefreshPage()}}
 >
   <Row className="mb-3">
-    <Form.Group as={Col} controlId="formGridEmail">
+    <Form.Group as={Col} controlId="formGridEmail" style={{color:'black'}}>
       <Form.Label>startupName</Form.Label>
       <Form.Control defaultValue={this.props.selectupdateCrad.startupName} type="text" id="startupName" name="startupName" />
     </Form.Group>
@@ -43,7 +40,7 @@ export class UpdatestartUpdata extends Component {
 
   <Form.Group className="mb-3" controlId="formGridAddress1">
     <Form.Label>Logo Image</Form.Label>
-    <Form.Control type="url"  id="LogoImage" name="LogoImage" />
+    <Form.Control placetype="url"  id="LogoImage" name="LogoImage" />
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formGridAddress2">

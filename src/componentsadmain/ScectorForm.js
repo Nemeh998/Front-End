@@ -24,20 +24,20 @@ export class ScectorForm extends Component {
         <div className='contener'>
 
           {
-            this.props.data.map(item1 => {
+            this.props.data?.map(item1 => {
               return (
                 <>
 
                   {
 
-                    item1.sectors.map((itemsectors, idx) => {
+                    item1.sectors?.map((itemsectors, idx) => {
                       return (
                         <div className='pic-button'>
                           <Card border="secondary" className='cardDelAdd'>
                           <Card.Header>{itemsectors.subSectorname}</Card.Header>
                             <Card.Body>
 
-                              <Card.Img variant="top" src={itemsectors.LogoImage} />
+                              <Card.Img variant="top" src={itemsectors.subSectorLogo} />
                             </Card.Body>
                             <Card.Footer>
                               <div className='contbtn'>
@@ -73,7 +73,7 @@ export class ScectorForm extends Component {
 
 <div className='AddStartup-form'>
 <div className='img'>
-  {/* <img src={section}/> */}
+
 </div>
 
           < div className="Form-2" >
@@ -93,15 +93,15 @@ export class ScectorForm extends Component {
 
               <Form.Group className="mb-3" controlId="formGridAddress1">
                 <Form.Label>Logo Image</Form.Label>
-                <Form.Control placeholder="subSectorLogo" type="file" id="subSectorLogo" name="subSectorLogo" accept="image/*" />
+                <Form.Control placeholder="subSectorLogo" type="url" id="subSectorLogo" name="subSectorLogo" accept="image/*" />
               </Form.Group>
-
+            
               <Form.Group as={Col} controlId="formGridState">
                 <Form.Label>mainSectorName</Form.Label>
                 <Form.Select defaultValue="Choose..." id="mainSectorName" name="mainSectorName">
                   {
 
-                    this.props.data.map(item => {
+                    this.props.data?.map(item => {
                       return (
                         <>
 

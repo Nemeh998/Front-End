@@ -16,7 +16,8 @@ import Search from "./Search";
 
 import { withAuth0 } from "@auth0/auth0-react";
 import About from "./About";
-import { New } from './New';
+
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -48,28 +49,35 @@ class App extends React.Component {
       userEmail:[],
       // jnhbgvfcfvghj
       setSearchInput:[],
+
+      datanewStartups:[]
     }
   }
   // =====================================
   // get  All data
   async componentDidMount() {
     const serverUrl = process.env.REACT_APP_SERVER;
-    const url = `${serverUrl}/getDataHendler`;
-
+    let url = `${serverUrl}/getDataHendler`;
+    if(window.location.pathname.includes('Admain')){
+       url = `${serverUrl}/getDataHendlerAdmin`;
+    }
+  
     await axios
       .get(url)
       .then((response) => {
-        console.log( response.data)
-        let Arr=[]
-        response.data.map(item1 => {
-          item1.sectors.map(itemsectors => {
-           
-            for (let i=0;i<=itemsectors.startup.length;i++){
-           if(itemsectors.startup[i]){
-                Arr.push(itemsectors.startup[i])
-           }
-            }
-            console.log("=============================================")
+        let Arr=[];
+        response.data?.map(item1 => {
+          item1.sectors?.map(itemsectors => {
+            itemsectors.startup?.filter((obj) => obj.approved)?.map(item=>{
+              for (let i=0;i<=itemsectors.startup.length;i++){
+                if(itemsectors.startup[i]){
+                  Arr.push(itemsectors.startup[i])
+
+                }}
+            
+       
+            })
+            // console.log("=============================================")
         })
       })
       
@@ -77,7 +85,7 @@ class App extends React.Component {
         data: response.data,
         selectDataSector:Arr
       });
-      console.log(this.state.selectDataSector)
+      console.log(this.state.selectDataSector,'data from Api')
       })
       .catch((err) => {
         this.setState({err: "There is and error"});
@@ -112,7 +120,6 @@ let deletesectors={
   deleteStartUp = (mainSectorid, sectorsId, startupid, idx) => {
 let deletestartup={mainSectorid:mainSectorid,sectorsId:sectorsId,startupid:startupid,idx:idx};
     const serverUrl = process.env.REACT_APP_SERVER;
-    // ?sectorid=${sectorsId}&mainSectorid=${mainSectorid}&startupid=${startupid}&idx=${idx}`);
  axios
  .delete(`${serverUrl}/deletStartUpDataHendler`,{
       params:deletestartup,
@@ -149,7 +156,7 @@ let deletestartup={mainSectorid:mainSectorid,sectorsId:sectorsId,startupid:start
       mainSectorName: e.target.mainSectorName.value,
     }
     const serverUrl = process.env.REACT_APP_SERVER;
-
+   
 console.log(newStartups)
     let startupsData = await axios.post(`${serverUrl}/postDataHendler`, newStartups)
     this.setState({
@@ -209,10 +216,10 @@ console.log(newStartups)
         itemsectorsid:itemsectors_id, 
         idx:idx_id,
       });
-      this.state.data.map(item1 => {
-        item1.sectors.map(itemsectors => {
+      this.state.data?.map(item1 => {
+        item1.sectors?.map(itemsectors => {
           
-          itemsectors.startup.map(itemstartup => {
+          itemsectors.startup?.map(itemstartup => {
   
             if (itemstartup._id === itemstartup_id) {
               const selectupdateCrad = itemstartup;
@@ -240,26 +247,26 @@ console.log(newStartups)
   // ==========================================================
   // modal render
   displayCardAsModel = (clickStartupImg) => {
-    // console.log("anything", clickStartupImg)
-    this.state.data.map(item1 => {
-      item1.sectors.map(itemsectors => {
-        itemsectors.startup.map(itemstartup => {
+   
+    this.state.data?.map(item1 => {
+      item1.sectors?.map(itemsectors => {
+        itemsectors.startup?.map(itemstartup => {
 
           if (itemstartup._id === clickStartupImg) {
             const selectDataStartUp = itemstartup;
-            // console.log('find', selectDataStartUp)
+       
             this.setState({
               selectDataStartUp: selectDataStartUp,
               displayCard: true
             });
-            // console.log('startupName', selectDataStartUp);
+         
           }
-          // after that get horned object and set display as true if
+
         });
       });
 
     });
-    // console.log('its wok')
+  
 
   }
   handleClose = () => {
@@ -274,8 +281,8 @@ console.log(newStartups)
     this.setState=({
       filterData:this.state.filterData.splice(0, this.state.filterData.length)
     })
-    console.log(searchText)
-    const newFilter=await this.state.data.map((value)=>{
+  
+    const newFilter=await this.state.data?.map((value)=>{
       value.sectors.filter(itemsectors=>{
         if(itemsectors.subSectorname.toLowerCase().includes(searchText.toLowerCase())){
           
@@ -287,7 +294,7 @@ console.log(newStartups)
                                                                       
         }
       })
-      console.log(this.state.filterData)
+   
     })
 
   };
@@ -296,16 +303,14 @@ console.log(newStartups)
     this.setState({ searchValue: e.target.value });
   }
 
-// sectors button
-// componentDidMount = () => {
-//  this.filterdSector;
-// };
+
 filterdSector=(subSectorid)=>{
 let Arr=[]
-  this.state.data.map(item1 => {
-    item1.sectors.map(itemsectors => {
+  this.state.data?.map(item1 => {
+    item1.sectors?.map(itemsectors => {
       if (itemsectors._id === subSectorid) {
-        const selectDataSector = itemsectors.startup;
+        let selectDataSector = itemsectors.startup;
+         selectDataSector = selectDataSector.filter((obj)=> obj.approved);
 
         this.setState({
           selectDataSector: selectDataSector,
@@ -320,6 +325,8 @@ console.log(itemsectors.startup[i])
           Arr.push(itemsectors.startup[i])
         }
       }
+      Arr = Arr.filter((obj)=> obj.approved);
+      console.log(Arr, 'after filter');
       this.setState({
         selectDataSector: Arr,
         displaystartupCard: true,
@@ -327,8 +334,35 @@ console.log(itemsectors.startup[i])
       }
     });
   });
-  console.log(this.state.selectDataSector)
+ 
+
 }
+addstartupsDatafromUser = async (e) => {
+  e.preventDefault()
+  let newStartups = {
+    startupName: e.target.startupName.value,
+    LogoImage: e.target.LogoImage.value,
+    city: e.target.city.value,
+    founderName: e.target.founderName.value,
+    numberOfEmployees: e.target.numberOfEmployees.value,
+    yearOfEstablishment: e.target.yearOfEstablishment.value,
+    websiteURL: e.target.websiteURL.value,
+    emailAddress: e.target.emailAddress.value,
+    Sectors: e.target.Sectors.value,
+    mainSectorName: e.target.mainSectorName.value,
+  }
+  console.log(newStartups)
+  const serverUrl = process.env.REACT_APP_SERVER;
+
+
+      let startupsData =  axios.post(`${serverUrl}/poststartupsDataEndUserHendler`, newStartups)
+  
+    this.setState({
+      data:startupsData.data
+    })
+    window.location.reload();
+
+};
 
 render() {
 const { user, isAuthenticated } = this.props.auth0;
@@ -340,7 +374,8 @@ const { user, isAuthenticated } = this.props.auth0;
 
           <Routes>
             <Route path="/" element={<Home
-              displayCardAsModel={this.displayCardAsModel}
+            addstartupsDatafromUser={this.addstartupsDatafromUser}
+            displayCardAsModel={this.displayCardAsModel}
               data={this.state.data}
               displayCard={this.state.displayCard}
               handleClose={this.handleClose}
@@ -358,14 +393,17 @@ const { user, isAuthenticated } = this.props.auth0;
             </Route>
 
             <Route path='Admain' element={<Admain
-            // user={user} isAuth={isAuthenticated}
               data={this.state.data}
               deleteStartUp={this.deleteStartUp}
               addstartupsData={this.addstartupsData}
               addsectorsData={this.addsectorsData}
+            
+
               />}>
 
               <Route  index element={<StartupForm
+
+datanewStartups={this.state.datanewStartups}
               updateStartUp={this.updateStartUp}
               handleCloseUpdatecard={this.handleCloseUpdatecard}
               displayUpdateCardAsModel={this.displayUpdateCardAsModel}
@@ -374,7 +412,7 @@ const { user, isAuthenticated } = this.props.auth0;
                 deleteStartUp={this.deleteStartUp}
                 addstartupsData={this.addstartupsData}
                 selectupdateCrad={this.state.selectupdateCrad}
-              />} />
+                />} />
               <Route path='ScectorForm' element={<ScectorForm 
                 data={this.state.data}
                 deleteSectors={this.deleteSectors}
@@ -390,16 +428,12 @@ const { user, isAuthenticated } = this.props.auth0;
                 filterData={this.state.filterData}
                 />}>
               
-           
+           </Route>
             <Route path='About' element={<About/>}/>
-            </Route>
-            <Route path='new' element={<New
-                data={this.state.data}
-               
-                />}>
-              
-           
-            </Route>
+         
+        
+      
+    
           </Routes>
           <Footer />
         </Router>
