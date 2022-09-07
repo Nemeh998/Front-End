@@ -4,7 +4,7 @@ import {withAuth0} from "@auth0/auth0-react";
 import {Link, Outlet} from "react-router-dom";
 
 
-
+import Dropdown from 'react-bootstrap/Dropdown';
 import axios from "axios";
 import StarIcon from '@mui/icons-material/Star';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -23,9 +23,11 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 
 import Avatar from '@mui/material/Avatar';
-import IconButton, {IconButtonProps} from '@mui/material/IconButton';
+import BusinessIcon from '@mui/icons-material/Business';
 import Typography from '@mui/material/Typography';
 import {red} from '@mui/material/colors';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+// import class from '../About';
 
 export class Admain extends Component {
   
@@ -73,7 +75,15 @@ export class Admain extends Component {
     })
     window.location.reload()
   }
-
+  countData=(data)=>{
+    let count = 0;
+    data?.forEach(item1 => {
+      item1.sectors?.forEach(itemsectors => {
+        count += itemsectors.startup?.filter((obj) => !obj.approved)?.length;
+  });
+  });
+  return count;
+}
 
   render() {
   
@@ -86,6 +96,7 @@ export class Admain extends Component {
 
       <div >
 
+{/*  */}
 
         <section className="our-services">
           <div className="">
@@ -94,19 +105,20 @@ export class Admain extends Component {
               <div className="row ">
                 <div className="col d-flex justify-content-center flex-column align-items-center h-50">
 
-                  <Link to="/Admain/"><StarIcon /></Link>
+                  <Link to="/Admain/"><BusinessIcon style={{fontSize:'5rem'}}/></Link>
                   <p>startup</p>
                 </div>
                 <div className="col d-flex justify-content-center flex-column align-items-center h-50">
 
-                  <Link to="ScectorForm"><PersonIcon /></Link>
+                  <Link to="ScectorForm"><AccountBoxIcon style={{fontSize:'5rem'}} /></Link>
 
                   <p>sectors</p>
                 </div>
                 <div className="col d-flex justify-content-center flex-column align-items-center h-50">
-
-                  <DropdownButton id="dropdown-basic-button" title={<CircleNotificationsIcon />}>
-
+                  <div className='to' >
+ <span className='number'>{this.countData(this.props.data)}</span>
+                  <DropdownButton id="dropdown-basic-button" title={ <CircleNotificationsIcon style={{fontSize:'3rem'}}/>} >
+               
                     {
                                  
                     this.props.data?.map(item1 => {
@@ -122,7 +134,7 @@ export class Admain extends Component {
                                   {
                                     
                                     itemsectors.startup?.filter((obj) => !obj.approved)?.map((itemstartup, idx) => {
-                            
+                                   console.log(itemsectors.startup?.filter((obj) => !obj.approved).length);
                                     
                                       return (
                                         <>
@@ -185,7 +197,7 @@ export class Admain extends Component {
 )})}
  
 </DropdownButton>
-{/* <p>{this.state.counter}</p> */}
+</div>
                   <p>Notifications</p>
                 </div>
 
@@ -215,6 +227,6 @@ export class Admain extends Component {
       <div> login</div>
     )
   }
-}
 
+}
 export default withAuth0(Admain);

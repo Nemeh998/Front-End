@@ -84,6 +84,7 @@ class App extends React.Component {
       this.setState({
         data: response.data,
         selectDataSector:Arr
+      
       });
       console.log(this.state.selectDataSector,'data from Api')
       })

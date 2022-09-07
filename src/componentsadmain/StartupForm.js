@@ -62,8 +62,8 @@ export class Form2 extends Component {
                       
                               return (
                                 <div className='pic-button'>
-                          
-    <Card sx={{ maxWidth: 300 }}>
+                     {/* sx={{ maxWidth: 300 }}      */}
+    <Card size={'lg'}>
       <CardHeader
       
         title={itemstartup.startupName}

@@ -18,10 +18,10 @@ font-size: 2rem;
 }
 
   .dropdown-toggle {
-    background-color: rgb(172, 73, 225)!important;
+    background-color: rgb(13 110 253)!important;
     white-space: nowrap;
-    width: 50px !important;
-    height: 40px !important;
+    width:4.5rem!important;
+    height: 4rem !important;
     border-radius: 6rem ;
   }
    .button-indrop{
@@ -84,13 +84,20 @@ width: 100%;
   --bs-btn-disabled-border-color: #fff !important;
 } 
 
-.css-i4bv87-MuiSvgIcon-root {
+/* .css-i4bv87-MuiSvgIcon-root {
   font-size: 2.2rem !important;
-}
+} */
 
 
 
 .tow{
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+.number{
+  font-size: 28px;
+  color: red;
+  position: absolute;
+  z-index: 100;
+  padding-left: 45px;
 }
