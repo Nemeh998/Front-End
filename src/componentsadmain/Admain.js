@@ -109,19 +109,19 @@ export class Admain extends Component {
               <div className="row ">
                 <div className="col d-flex justify-content-center flex-column align-items-center h-50">
 
-                  <Link to="/Admain/"><BusinessIcon className="iconinadmain"/></Link>
+                  <Link to="/Admain/"><BusinessIcon style={{fontSize:'5rem'}}className="iconinadmain"/></Link>
                   <p>startup</p>
                 </div>
                 <div className="col d-flex justify-content-center flex-column align-items-center h-50">
 
-                  <Link to="ScectorForm"><AccountBoxIcon className="iconinadmain" /></Link>
+                  <Link to="ScectorForm"><AccountBoxIcon style={{fontSize:'5rem'}}className="iconinadmain" /></Link>
 
                   <p>sectors</p>
                 </div>
                 <div className="col d-flex justify-content-center flex-column align-items-center h-50">
                   <div className='to' >
  <span className='number'>{this.countData(this.props.data)}</span>
-                  <DropdownButton id="dropdown-basic-button" title={ <CircleNotificationsIcon className="iconinadmain"/>} >
+                  <DropdownButton id="dropdown-basic-button" title={ <CircleNotificationsIcon style={{fontSize:'5rem'}}className="iconinadmain"/>} >
                
                     {
                                  
