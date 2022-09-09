@@ -56,7 +56,7 @@ export class Header extends Component {
 
               <Nav.Link href="/Admain">
                 <Link to="/Admain" className="home-nav-link">
-                Startup
+                Admain
                 </Link>
               </Nav.Link>
   

@@ -215,6 +215,7 @@ console.log(this.state.filterdStartup)
           else if (NumberText === 100) {
 
             if (this.state.filterdStartup[i]?.numberOfEmployees <= 100 && this.state.filterdStartup[i]?.numberOfEmployees >= 51) {
+              // console.log(this.state.filterdStartup)
 
               Arr.push(this.state.filterdStartup[i])
 
@@ -225,6 +226,7 @@ console.log(this.state.filterdStartup)
         else if (NumberText === 200) {
 
           if (this.state.filterdStartup[i]?.numberOfEmployees <= 200 && this.state.filterdStartup[i]?.numberOfEmployees >= 101) {
+            // console.log(this.state.filterdStartup)
 
             Arr.push(this.state.filterdStartup[i])
 
@@ -260,7 +262,7 @@ console.log(this.state.filterdStartup)
         <Card   className='Card'>
           <Card.Img variant="top" src={this.state.filterdStartup[i].LogoImage} />
           <Card.Body>
-            <Card.Title className="startupName">{this.state.filterdStartup[i].startupName}</Card.Title>
+            <Card.Title >{this.state.filterdStartup[i].startupName}</Card.Title>
          
           </Card.Body>
 
@@ -294,34 +296,46 @@ console.log(this.state.filterdStartup)
             <div className="blog-header-img">
            
 
-        <Form onSubmit={this.searchFilter}>
+        <Form className="form-Search" onSubmit={this.searchFilter}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label className="d-block">Search Startup</Form.Label>
+
+
+  <div>
+
+            {/* <Form.Label className="d-block"></Form.Label> */}
             <Form.Control
               type="text"
-              placeholder="search"
+              placeholder="Search Startup"
               className="course-search-input"
               name="searchValue"
               value={this.state.searchValue}
               onChange={this.searchChange}
             />
+  </div>
+
+          </Form.Group>
+          <Form.Group>
+        
             <input
               type="submit"
               value="Search"
-              className="course-search-btn btn btn-primary"
+              className="seachbutton"
             />
+
           </Form.Group>
         </Form>
         {/* =============================== */}
         <div className="select-container">
           <Form.Group controlId="exampleForm.SelectCustom1">
-            <Form.Label className='label'>Level</Form.Label>
+            {/* <Form.Label className='label'>  Employees number</Form.Label> */}
             <Form.Control
+            className='formcontrol'
+            
               as="select"
               name="level"
               onChange={this.NumberFilter}
             >
-              <option value="all">All</option>
+              <option value="all">Employees</option>
               <option value={50}>0-50</option>
               <option value={100}>51-100</option>
               <option value={200}>101-200</option>
@@ -339,14 +353,16 @@ console.log(this.state.filterdStartup)
                 <option value="less">{"< month"}</option>
               </Form.Control>
             </Form.Group> */}
-          <Form.Group controlId="exampleForm.SelectCustom3">
-            <Form.Label className='label'>city</Form.Label>
+          <Form.Group controlId="exampleForm.SelectCustom3"
+          >
+            {/* <Form.Label className='label'>city</Form.Label> */}
             <Form.Control
+            className='formcontrol'
               as="select"
               name="City"
               onChange={this.CityFilter}
             >
-              <option value="all">All</option>
+              <option value="all">city</option>
               <option value="Amman">Amman</option>
               <option value="Balqa ">Balqa</option>
               <option value="Madaba ">Madaba </option>

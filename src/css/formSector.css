@@ -41,7 +41,7 @@ color: black;
  margin-left: 5%;
  margin-right: 5%;
  margin-bottom: 10%;
- background-color: rgba(128, 128, 128, 0.289);
+ /* background-color: rgba(128, 128, 128, 0.289); */
 
 }
 .cardDelAdd{
@@ -122,3 +122,22 @@ background: linear-gradient(#e66465, #9198e5);
     font-size: 4rem;
   
   }
+
+  @media screen and (min-width:300px) and (max-width:1300px){
+  .AddStartup-form .img{
+
+    background-image:none;
+
+  }
+
+  .AddStartup-form{
+    grid-template-columns: 1fr;
+  }
+  .dropdown-toggle {
+    background-color: rgb(13 110 253)!important;
+    white-space: nowrap;
+    width: 3rem!important;
+    height: 1.2rem !important;
+    /* border-radius: 6rem; */
+}
+}

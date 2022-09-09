@@ -101,3 +101,12 @@ width: 100%;
   z-index: 100;
   padding-left: 45px;
 }
+.login{
+  margin-top: 200px;
+  margin-bottom: 25vh;
+  margin-left: 200px;
+  font-size: 50px;
+}
+.iconinadmain{
+  font-size:'5rem';
+}

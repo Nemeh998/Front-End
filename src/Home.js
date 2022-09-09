@@ -220,11 +220,11 @@ Ecosystem </p>
 
     <Form.Group as={Col} controlId="formGridCity">
       <Form.Label>Employees</Form.Label>
-      <Form.Control type="number" id="numberOfEmployees" name="numberOfEmployees" placeholder="number Of Employees"  />
+      <Form.Control  className="form-width" type="number" id="numberOfEmployees" name="numberOfEmployees" placeholder="Employees"  />
     </Form.Group>
     <Form.Group as={Col} controlId="formGridZip">
-      <Form.Label>year Of Establishment</Form.Label>
-      <Form.Control type="datetime-local" id="yearOfEstablishment" name="yearOfEstablishment" />
+      <Form.Label>Establishment</Form.Label>
+      <Form.Control className="form-width" type="datetime-local" id="yearOfEstablishment" name="yearOfEstablishment" />
     </Form.Group>
   </Row>
 

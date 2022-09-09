@@ -259,3 +259,58 @@ margin: 5% 15% 5% 15%;
 background-color: white;
 justify-content: center;
  }
+
+ @media screen and (min-width:300px) and (max-width:1000px){
+  /* Start Head */
+  .hero-img{
+    width: 100%;
+    height: 75vh;
+    position: relative;
+    background-image: url("../img/home.jpg");
+    background-position: center;
+    background-size: contain;
+    align-items: end;
+    background-repeat: no-repeat;
+ 
+  }
+
+  .our-services-header p{font-size: 1rem;}
+  .AppHome {
+    margin: 1% 10%;
+}
+  .filter-container {
+    padding-left: 10%;
+    padding-right: 10%;
+    color: #8183e0;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    column-gap: 0;
+    align-content: space-around;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.filter-container button{
+  /* margin: 5% 20%; */
+font-size: 0.5rem;
+margin-right: 0rem;
+min-width: 0.2rem;
+padding: 0.5rem 0.5rem;
+border: none;
+text-align: center;
+background-color: rgb(255, 255, 255);
+color: rgba(63, 40, 180, 0.8);
+border-radius: 0;
+border: 1px solid rgba(63, 40, 180, 0.8);
+font-weight: bold;
+cursor: pointer;
+
+}
+.bkcontener {
+  margin-bottom: 37%;
+}
+.form-width{
+  width: 70%;
+}
+}

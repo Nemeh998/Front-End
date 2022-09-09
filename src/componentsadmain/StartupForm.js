@@ -61,9 +61,9 @@ export class Form2 extends Component {
                             itemsectors.startup?.filter((obj) => obj.approved).map((itemstartup, idx) => {
                       
                               return (
-                                <div className='pic-button'>
+                                <div className='contener'>
                      {/* sx={{ maxWidth: 300 }}      */}
-    <Card size={'lg'}>
+    <Card size={'lg'} className='cardDelAdd'>
       <CardHeader
       
         title={itemstartup.startupName}
