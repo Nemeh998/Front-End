@@ -121,7 +121,7 @@ export class Admain extends Component {
                 <div className="col d-flex justify-content-center flex-column align-items-center h-50">
                   <div className='to' >
  <span className='number'>{this.countData(this.props.data)}</span>
-                  <DropdownButton id="dropdown-basic-button" title={ <CircleNotificationsIcon style={{fontSize:'5rem'}}className="iconinadmain"/>} >
+                  <DropdownButton id="dropdown-basic-button" title={ <CircleNotificationsIcon style={{fontSize:'3rem'}}className="iconinadmain"/>} >
                
                     {
                                  
