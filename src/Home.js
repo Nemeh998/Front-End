@@ -132,7 +132,7 @@ Ecosystem </p>
     <div className='companycard'>
         
 
-   {this.props.selectDataSector?.map(item1 => {
+   {this.props.selectDataSector?.filter((obj) => obj.approved)?.map(item1 => {
                return (
                    <>
 

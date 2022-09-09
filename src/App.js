@@ -66,21 +66,16 @@ class App extends React.Component {
       .get(url)
       .then((response) => {
         let Arr=[];
-        response.data?.map(item1 => {
-          item1.sectors?.map(itemsectors => {
-            itemsectors.startup?.filter((obj) => obj.approved)?.map(item=>{
-              for (let i=0;i<=itemsectors.startup.length;i++){
-                if(itemsectors.startup[i]){
-                  Arr.push(itemsectors.startup[i])
+        response.data.map(item1 => {
+          item1.sectors.map(itemsectors => {
 
-                }}
-            
-       
-            })
-            // console.log("=============================================")
-        })
-      })
-      
+            for (let i=0;i<=itemsectors.startup.length;i++){
+           if(itemsectors.startup[i]){
+                Arr.push(itemsectors.startup[i])
+           }
+            }   })
+          })
+      console.log(Arr)
       this.setState({
         data: response.data,
         selectDataSector:Arr
@@ -156,6 +151,7 @@ let deletestartup={mainSectorid:mainSectorid,sectorsId:sectorsId,startupid:start
       Sectors: e.target.Sectors.value,
       mainSectorName: e.target.mainSectorName.value,
     }
+    
     const serverUrl = process.env.REACT_APP_SERVER;
    
 console.log(newStartups)
