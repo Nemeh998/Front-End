@@ -348,7 +348,7 @@ addstartupsDatafromUser = async (e) => {
     Sectors: e.target.Sectors.value,
     mainSectorName: e.target.mainSectorName.value,
   }
-  console.log(newStartups)
+  console.log(newStartups,"addstartupsDatafromUser")
   const serverUrl = process.env.REACT_APP_SERVER;
 
 

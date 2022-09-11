@@ -33,18 +33,9 @@ export class Form2 extends Component {
     return (<>
    
   
-   
+   <div className='AppHome'>
         <div className='side'>
-       
-    
-
-
-
-
-       
-   
-    <div class="tasks-wrapper">
-    <div className='contener'>
+                               
           {
             this.props.data?.map(item1 => {
               return (
@@ -61,14 +52,13 @@ export class Form2 extends Component {
                             itemsectors.startup?.filter((obj) => obj.approved).map((itemstartup, idx) => {
                       
                               return (
-                                <div className='contener'>
-                     {/* sx={{ maxWidth: 300 }}      */}
-    <Card size={'lg'} className='cardDelAdd'>
+    <Card size={'lg'} className='Card'>
       <CardHeader
       
         title={itemstartup.startupName}
         subheader={itemstartup.yearOfEstablishment}
       />
+      <Card.Body>
       <CardMedia
         component="img"
         height="194"
@@ -91,39 +81,30 @@ export class Form2 extends Component {
         
                                        
       </CardActions>
-   
+      </Card.Body>
     </Card>
 
-
-                                </div>
-                              )
-                            })
-                          }
+)
+})
+}
 
                         </>
                       )
                     })
-
+                    
                   }
 
                 </>
               )
-
+              
             })
           }
-        </div>
      
-   
-  
-      
-     
-    </div>
- 
+    
+      </div>
+    
 
       </div>
-      <div>
-      </div>
-
 
       <div className="container2">
         <h1> add startup</h1>

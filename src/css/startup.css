@@ -40,3 +40,30 @@
       margin-right: 2%;
     }
   
+.css-185gdzj-MuiCardHeader-root {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 11px !important;
+}
+
+.side{
+
+  display: grid;
+background-color: rgb(253, 255, 255);
+grid-template-columns: repeat(auto-fit,minmax(300px,300px));
+column-gap: 3rem;
+row-gap: 2rem;
+/* border-radius:1rem ; */
+margin-bottom: 30rem;
+}
+.Card{
+  max-width: 330px;
+box-shadow: 5px 10px 10px rgb(185, 181, 181);
+
+}
